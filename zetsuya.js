@@ -12,7 +12,9 @@ client.on('message', async (msg) => {
 })
 
 async def on_ready():
-      await client.change_preference()
+      await client.change_presence(game=discord.Game.streaming(name='Zetsuya Server'))
+      print('Bot is ready!')
+
 client.login(process.env.TOKEN).catch(e => {
   console.log('NjA0NjUyMDExODU3NjQxNDg0.XTxENg.K9aW8_zCQLQK83lxoWsz5VrFkKg')// ini tempat untuk token kalian
 })
