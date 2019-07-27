@@ -14,7 +14,7 @@ client.on('message', async (msg) => {
 client.on('ready', () => {
   client.user.setStatus('Online')
   client.user.setGame('On ${client.guilds.size} Server!', 'https://twitch.tv/pewdiepie')
-  client.user.size('')
+  client.guilds.size('')
 })
 
 client.login('NjA0NjUyMDExODU3NjQxNDg0.XTxQWw.QJd_KZo86mvqHDS9-dIhlXn8HQY');
