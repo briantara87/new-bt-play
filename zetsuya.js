@@ -11,6 +11,8 @@ client.on('message', async (msg) => {
   }
 })
 
+async def on_ready():
+      await client.change_preference()
 client.login(process.env.TOKEN).catch(e => {
   console.log('NjA0NjUyMDExODU3NjQxNDg0.XTxENg.K9aW8_zCQLQK83lxoWsz5VrFkKg')// ini tempat untuk token kalian
 })
