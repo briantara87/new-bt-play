@@ -11,8 +11,9 @@ client.on('message', async (msg) => {
   }
 })
 
-bot.on('ready', () => {
-  bot.user.setStatus(Online)
-}
+client.on('ready', () => {
+  client.user.setStatus('Online')
+  client.user.setGame('Watching People', 'https://twitch.tv/pewdiepie')
+})
 
-client.login('NjA0NjUyMDExODU3NjQxNDg0.XTxENg.K9aW8_zCQLQK83lxoWsz5VrFkKg');
+client.login('NjA0NjUyMDExODU3NjQxNDg0.XTxQWw.QJd_KZo86mvqHDS9-dIhlXn8HQY');
