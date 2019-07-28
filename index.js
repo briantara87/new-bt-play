@@ -284,16 +284,15 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
 
     var addedembed = new RichEmbed()
     .setColor('RANDOM')
-    .setAuthor(`<:music:594866513555750951> Added Queue:`)
-    .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=120&height=60`)
-    .setDescription(`**[${song.title}](${song.url})**`)
-    .addField("Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
-    .addField('Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
-    .addField('Voice Channel:', song.voicechan, true)
-    .addField('👤 Requested By:', song.authors.tag, true)
-    .addField('Uploaded At:', song.create, true)
-    .addField('Current Volume:', `${serverQueue.volume}%`, true)
-    .setTimestamp();
+  .setAuthor(`Added to queue:`, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
+  .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
+  .setDescription(`**[${song.title}](${song.url})**`)
+  .addField("<:onk:597701756381691914> Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
+  .addField('<:Youtube:588594913243955200> Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
+  .addField(':loud_sound: Voice Channel:', song.voicechan, true)
+  .addField('👤 Requested By:', song.authors.tag, true)
+  .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
+  .setTimestamp();
     
 		return message.channel.send(addedembed);
 	}
@@ -325,12 +324,11 @@ function play(guild, song, message) {
   .setAuthor(`Start Playing:`, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
   .setDescription(`**[${song.title}](${song.url})**`)
-  .addField("Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
-  .addField('Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
-  .addField('Voice Channel:', song.voicechan, true)
+  .addField("<:onk:597701756381691914> Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
+  .addField('<:Youtube:588594913243955200> Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
+  .addField(':loud_sound: Voice Channel:', song.voicechan, true)
   .addField('👤 Requested By:', song.authors.tag, true)
-  .addField('Uploaded At:', song.create, true)
-  .addField('Current Volume:', `${serverQueue.volume}%`, true)
+  .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
   .setTimestamp();
   
 	serverQueue.textChannel.send(playembed);
