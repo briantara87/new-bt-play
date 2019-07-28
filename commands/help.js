@@ -19,7 +19,7 @@ exports.run = async(client, msg, args) => { // Modification
   .setTitle(`Beta Commands`) // This for A Title in from Embed
   .setTimestamp()
   .setFooter(`Requested By: ${msg.author.tag}`)
-  .addField(`Play, Skip, Volume, Prefix, Ping, Stop, Pause, Resume, Loop`) // You cant add The Command in Here and You cant add Any more field for The Type Commands
+  .addField(":o: Commands:", "Play, Skip, Volume, Prefix, Ping, Stop, Pause, Resume, Loop") // You cant add The Command in Here and You cant add Any more field for The Type Commands
   msg.channel.send(embed)
     
   // This is will be send The Embed
