@@ -1,5 +1,5 @@
 let { RichEmbed } = require('discord.js')
-const { queue } = require('../index.js');
+const { handleVideo, queue } = require("../index.js")
 
 exports.run = async(client, msg, args) => { //mampus terkejut merah semua :u
   const serverQueue = queue.get(msg.guild.id);

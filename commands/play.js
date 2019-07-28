@@ -15,10 +15,9 @@ exports.run = async (bot, msg, args) => {
      }
   }//anjir ini kok crafty?;v //coding crafty cuk. || owh // ga bisa nih.
   //args = args.slice(0)
-  const queue = new Map()
   const searchString = args.join(' ');
 	const url = args[0] ? args[0].replace(/<(.+)>/g, '$1') : '';
-const serverQueue = queue.get(msg.guild.id);
+  const serverQueue = queue.get(msg.guild.id);
   
 		const voiceChannel = msg.member.voiceChannel;
 		if (!voiceChannel) return msg.channel.send('I\'m sorry but you need to be in a voice channel to play music!');

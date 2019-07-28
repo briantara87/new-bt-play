@@ -262,7 +262,8 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
 			connection: null,
 			songs: [],
 			volume: 100,
-			playing: true
+			playing: true,
+      loop: false
 		};
 		queue.set(message.guild.id, queueConstruct);
 
@@ -315,7 +316,8 @@ function play(guild, song) {
     serverQueue.textChannel.send(end)
     if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
     else console.log(reason);
-    serverQueue.songs.shift();
+    let shifed = serverQueue.songs.shift();
+    if(serverQueue.loop) return serverQueue.songs.push(shifed) //push back! 
     play(guild, serverQueue.songs[0]);
   })
   .on('error', error => console.error(error));

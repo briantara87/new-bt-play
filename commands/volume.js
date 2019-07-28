@@ -2,8 +2,6 @@ const { queue } = require("../index.js");
 
 exports.run = async(client, msg, args) => {
     var serverQueue = queue.get(msg.guild.id);
-    const queue = new Map()
-    
     if (!msg.member.voiceChannel) return msg.channel.send('You are not in a voice channel!');
 		if (!serverQueue) return msg.channel.send('There is nothing playing.');
 		if (!args[0]) return msg.channel.send(`The current volume is: **${serverQueue.volume}**`);
