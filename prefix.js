@@ -1,4 +1,4 @@
-const Discord = require('discord.js'); // Gets The Discord.js Package
+   const Discord = require('discord.js'); // Gets The Discord.js Package
 const fs = require("fs"); // Gets the fs Package
 const bot = new Discord.Client(); // Our Discord Client defined as bot
 
