@@ -293,31 +293,33 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
   .addField('👤 Requested By:', song.authors.tag, true)
   .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
   .setTimestamp();
-    
-		return message.channel.send(addedembed);
-	}
-	return undefined;
+    serverQueue.songs.push(song);
+    console.log(serverQueue.songs);
+    if (playlist) return undefined;
+    else return message.channel.send(addedembed);
+  }
+  return undefined;
 }
-
-function play(guild, song, message) {
-	const serverQueue = queue.get(guild.id);
-
-	if (!song) {
-		serverQueue.voiceChannel.leave();
-		queue.delete(guild.id);
-		return;
-}
-	console.log(serverQueue.songs);
-
-	const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
-		.on('end', reason => {
-			if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
-			else console.log(reason);
-			serverQueue.songs.shift();
-			play(guild, serverQueue.songs[0]);
-		})
-		.on('error', error => console.error(error));
-	dispatcher.setVolumeLogarithmic(serverQueue.volume / 100);
+function play(guild, song) {
+  const serverQueue = queue.get(guild.id);
+  if (!song) {
+    serverQueue.voiceChannel.leave();
+    queue.delete(guild.id);
+    return;
+  }
+  console.log(serverQueue.songs);
+   const dispatcher = serverQueue.connection.playStream(ytdl(song.url, { filter: 'audioonly', quality: 'highest' }))
+  .on('end', reason => {
+    let end = new Discord.RichEmbed()
+    .setDescription('**🎶 | The queue of song is end!**')
+    serverQueue.textChannel.send(end)
+    if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
+    else console.log(reason);
+    serverQueue.songs.shift();
+    play(guild, serverQueue.songs[0]);
+  })
+  .on('error', error => console.error(error));
+  dispatcher.setVolumeLogarithmic(serverQueue.volume / 100);
   
   var playembed = new RichEmbed()
   .setColor('RANDOM')
