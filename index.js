@@ -1,4 +1,5 @@
-const Discord = require('discord.js');
+// KUMPULAN CONST
+const Discord = require("discord.js");
 const { Client, Util, RichEmbed, MessageEmbed, Collection } = require('discord.js');
 const http = require('http');
 const express = require('express');
@@ -8,10 +9,13 @@ const db = require('quick.db');
 const { Canvas } = require("canvas-constructor")
 const { loadImage } = require("canvas")
 const config = require("./config.json");
-const YouTube = require("simple-youtube-api");//biar musik ne bisa nyala. :u
+//const coins = require("./coins.json");
+//const xp = require("./xp.json");
+const YouTube = require("simple-youtube-api");
 const ytdl = require("ytdl-core");
 const snekfetch = require('snekfetch');
 const cooldown = new Collection();
+//const money = require('discord-money'); 
 const client = new Client({
     disableEvents: [
 ],
@@ -20,8 +24,10 @@ const client = new Client({
 })
 
 const func = require("./functions.js");
+
 const queue = new Collection();
 client.queue = queue;
+
 client.commands = fs.readdirSync('./commands');
 client.aliases = {};
 
@@ -49,14 +55,14 @@ require("./server.js");
 
 
 function random_playing() {
-  let status = [`On Development`] //Set status ne disini
+  let status = [`Zetsuya Bot`, `On Development!`] // You cant set anything playing you want it!
   let random = status[Math.floor(Math.random() * status.length)]
-  client.user.setActivity(random, {type: "STREAMING", url: 'https://www.twitch.tv/zetsuya'}); //jan di ubah ubah, nnti meledug :u.
+  client.user.setActivity(random, {type: "STREAMING", url: 'https://www.twitch.tv/zetsuya'}); 
 }
 
 client.on('ready', () => {
   var clientlog = `
-[BOT LOGS] Zetsuya Status [BOT LOGS]
+[BOT LOGS] Zetsuya Community [BOT LOGS]
 =============================================
 With ${client.users.size} users
 With ${client.guilds.size} servers
@@ -68,30 +74,128 @@ With ${client.channels.size} channels
   setInterval(random_playing, 8000);
 });
 
+client.on('guildMemberAdd', async member => {
+  
+  let role = await client.role.fetch(`Role.${member.guild.id}.role`)
+  let mark = await client.role.fetch(`Role.${member.guild.id}.on`)
+  
+  let roletarget = member.guild.roles.get(role)
+    member.addRole(roletarget).catch(console.error);
+  
+  console.log("Do You Stop ME!!");
+  let memberavatar = await loadImage(member.user.displayAvatarURL)
+  
+  let channeltarget = client.welcome.fetch(`welcome.${member.guild.id}.channel`)
+  let channelmark = client.welcome.get(`welcome.${member.guild.id}.on`)
+  
+  if (!channeltarget) return;
+  if (!channelmark) return;
+  
+if (channelmark == true) {
+  let welcomeChannel = member.guild.channels.get(channeltarget)
+  
+  let welcomeCB = new Canvas(800, 360)
+  .setColor("RED")
+  .addRect(0,0,800,360)
+  .setShadowColor("#212121")
+  .setShadowBlur(200)
+  .setColor("WHITE")
+  .addRect(10,10,780,340)
+  .setColor("GRAY")
+  .addCircle(400, 130, 110)
+  .addCircularImage(memberavatar, 400, 120, 100)
+  .setTextAlign("center")
+  .setTextFont('26px Impact')
+  .addText(`Welcome To ${member.guild.name}, ${member.user.username}!`, 400, 265)
+  .addText(`You're the ${member.guild.memberCount} Members`, 400, 300)
+
+  const attachment = new Discord.Attachment(welcomeCB.toBuffer(), 'image.jpeg');
+  welcomeChannel.send(`Welcome ${member}`, attachment)
+}
+})
+
+client.on('guildMemberRemove', async member => {
+  console.log("Do You Stop ME!");
+  
+  let memberavatar = await loadImage(member.user.displayAvatarURL)
+  
+  let channeltarget = client.welcome.fetch(`welcome.${member.guild.id}.channel`)
+  let channelmark = client.welcome.fetch(`welcome.${member.guild.id}.on`)
+  
+  if (!channeltarget) return;
+  if (!channelmark) return;
+  
+if (channelmark == true) {
+  let welcomeChannel = member.guild.channels.get(channeltarget)
+  
+  let welcomeCB = new Canvas(800, 360)
+  .setColor("RED")
+  .addRect(0,0,800,360)
+  .setShadowColor("#212121")
+  .setShadowBlur(200)
+  .setColor("WHITE")
+  .addRect(10,10,780,340)
+  .setColor("GRAY")
+  .addCircle(400, 130, 110)
+  .addCircularImage(memberavatar, 400, 120, 100)
+  .setTextAlign("center")
+  .setTextFont('26px Impact')
+  .addText(`Goodbye ${member.user.username} Semoga kamu tetap mengingat server ini`, 400, 265)
+  .addText(`Now the server Member is ${member.guild.memberCount} Members`, 400, 300)
+
+  const attachment = new Discord.Attachment(welcomeCB.toBuffer(), 'image.jpeg');
+  
+  welcomeChannel.send(`Goodbye ${member}, I Hope You Comeback Again 😭`, attachment);
+}
+})
 
 client.on('message', async msg => {
   if (msg.author.bot) return;
   if (msg.channel.type === "dm") return;
   
-  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
-  if(!prefixes[msg.guild.id]){ 
-     prefixes[msg.guild.id] = {
+  let crafty = JSON.parse(fs.readFileSync("./crafty.json", "utf8"));
+  if(!crafty[msg.guild.id]){ 
+     crafty[msg.guild.id] = {
        prefix: config.prefix
      }
   }
-  
-  //Akhir dari Prefix CMD!
-  
-    if (msg == `<@${client.user.id}>` || msg == `<@!${client.user.id}>`) {
+//End of code Prefix Command
+  if (msg == `<@${client.user.id}>` || msg == `<@!${client.user.id}>`) {
     let tagEmbed = new Discord.RichEmbed()
     .setThumbnail(client.user.displayAvatarURL) // ok!
     .setColor('RANDOM')
     .setTitle(`${client.user.username} Prefix`)
-    .setDescription(`Global Prefix =  (**z!**) \nPrefix In This Server =  (**${prefixes[msg.guild.id].prefix}**)`);
+    .setDescription(`Global Prefix =  (**^**) \nPrefix In This Server =  (**${crafty[msg.guild.id].prefix}**)`);
     msg.channel.send(tagEmbed);
 }
   
-  let prefix = prefixes[msg.guild.id].prefix;
+  //let xpadd = Math.floor(Math.random() * 5) + 10
+  //console.log(xpadd);
+  
+  //if(!xp[msg.author.id]){
+    //xp[msg.author.id] = {
+      //xp: 0,
+      //level: 1
+    //};
+  //}
+  
+  
+  //let curxp = xp[msg.author.id].xp;
+  //let curlvl = xp[msg.author.id].level;
+  //let nxtlvl = xp[msg.author.id].level * 500000;
+  //xp[msg.author.id].xp = curxp + xpadd;
+  
+  //if(nxtlvl <= xp[msg.author.id].xp){
+    //xp[msg.author.id].level = curlvl + 1;
+    //msg.channel.send(`Leveled Up: \nNew Level: **${curlvl + 1}**`).then(msg => msg.delete(1000))
+    //console.log(`Level is ${xp[msg.author.id].level}`);
+  //}
+  //fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+    //  if(err) console.log(err);
+  //})
+  
+//End of code Mention Bot  
+  let prefix = crafty[msg.guild.id].prefix;
   if (!msg.content.startsWith(prefix)) return;
   const messageArray = msg.content.split(" ");
   const args = msg.content.slice(prefix.length).trim().split(' ');
@@ -102,9 +206,8 @@ client.on('message', async msg => {
   let sender = msg.author;
   let cmd = args.shift().toLowerCase();
   msg.member.voiceChannel === msg.member.voice;
-  
-// Variasi ^^^
-  
+// Variables ^^^^^^^^
+
   try {
       if(client.aliases[cmd]){
 				delete require.cache[require.resolve(`./commands/${client.aliases[cmd]}`)];
@@ -124,10 +227,13 @@ client.on('message', async msg => {
   } finally {
    console.log(`${msg.author.tag} used ${cmd} in guild ${msg.guild.name} (${msg.guild.id})`)
 }
+//End of code CMD Handler
   
-//Akhir dari command handal.
   
-  exports.handleVideo = handleVideo;
+// Music Command
+// ============================================================================================================================================
+});
+exports.handleVideo = handleVideo;
 exports.queue = queue;
 
 async function handleVideo(video, message, voiceChannel, playlist = false) {
@@ -231,3 +337,6 @@ function play(guild, song, message) {
   
 	serverQueue.textChannel.send(playembed);
 }
+// ============================================================================================================================================
+
+client.login(process.env.TOKEN);
