@@ -153,7 +153,7 @@ client.on('message', async msg => {
   if (msg.author.bot) return;
   if (msg.channel.type === "dm") return;
   
-  let crafty = JSON.parse(fs.readFileSync("./crafty.json", "utf8"));
+  let crafty = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
   if(!crafty[msg.guild.id]){ 
      crafty[msg.guild.id] = {
        prefix: config.prefix
@@ -288,12 +288,11 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
     .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=120&height=60`)
     .setDescription(`**[${song.title}](${song.url})**`)
     .addField("Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
-    .addField('<:youtubers:529206401327955998> Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
+    .addField('Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
     .addField('Voice Channel:', song.voicechan, true)
     .addField('👤 Requested By:', song.authors.tag, true)
     .addField('Uploaded At:', song.create, true)
     .addField('Current Volume:', `${serverQueue.volume}%`, true)
-    .setImage('https://cdn.glitch.com/a3c85270-31aa-410d-a063-a81ad221d5c7%2F13-37-32-WhisperedJovialAuklet-size_restricted.gif?1559198474040')
     .setTimestamp();
     
 		return message.channel.send(addedembed);
@@ -327,12 +326,11 @@ function play(guild, song, message) {
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
   .setDescription(`**[${song.title}](${song.url})**`)
   .addField("Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
-  .addField('<:youtubers:529206401327955998> Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
+  .addField('Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
   .addField('Voice Channel:', song.voicechan, true)
   .addField('👤 Requested By:', song.authors.tag, true)
   .addField('Uploaded At:', song.create, true)
   .addField('Current Volume:', `${serverQueue.volume}%`, true)
-  .setImage('https://cdn.glitch.com/a3c85270-31aa-410d-a063-a81ad221d5c7%2F13-37-32-WhisperedJovialAuklet-size_restricted.gif?1559198474040')
   .setTimestamp();
   
 	serverQueue.textChannel.send(playembed);
