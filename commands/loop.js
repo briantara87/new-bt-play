@@ -2,11 +2,30 @@ let { RichEmbed } = require('discord.js')
 const { handleVideo, queue } = require("../index.js")
 
 exports.run = async(client, msg, args) => { //mampus terkejut merah semua :u
-  const serverQueue = queue.get(msg.guild.id);
-  if (!msg.member.voiceChannel) return msg.channel.send('You are not in a voice channel!');
-  if (msg.guild.member(client.user).voiceChannel.id !== msg.member.voiceChannel.id) return msg.reply('You must loop in same channels of the music!')
-  if (!serverQueue) return msg.channel.send("This server doesn't have a queue");
-  serverQueue.loop = !serverQueue.loop
-  if(serverQueue.loop) return msg.channel.send('**🔁 Repeated current queue!**');
-  return msg.channel.send('**🔁 Unrepeated current queue!**');
+  let message = msg
+  const serverQueue = queue.get(message.guild.id);
+  if(!message.member.voiceChannel) return message.channel.send({
+        embed: {
+            description: `${message.author}, Anda tidak berada di saluran suara!.`
+        }
+    });
+    if(!serverQueue) return message.channel.send({
+        embed: {
+            description: `Tidak ada yang bermain`
+        }
+    });
+    serverQueue.loop = !serverQueue.loop;
+    client.queue.set(message.guild.id, serverQueue)
+    message.react('🔁');
+    if(serverQueue.loop) return message.channel.send({
+        embed: {
+            description: `:repeat: mengulangi antrian saat ini!`
+        }
+    })
+    message.react('🔁');
+    return message.channel.send({
+        embed: {
+            description: `:repeat: Berhenti mengulangi antrian saat ini!`
+        }
+    })
 }//:V
