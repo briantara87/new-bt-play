@@ -1,11 +1,11 @@
 const Djs = require("discord.js");
 
-exports.run = async(client, msg, args) => { // Modification. baca dm lg.
+module.exports.run = async (client, msg, args) => { // Modification. baca dm lg.
   let opti = args.slice(0).join(' ')
   let optic = opti.toLocaleLowerCase()
-  if(!opti) return msg.channel.send('help here\n help')
+  if(!opti) return msg.channel.send('help here\nhelp dm')
   
-  if(optic.match('here')) {
+  if(opti.match('here')) {
     let embed = new Djs.RichEmbed()
     .setTitle('Help Command')
     .setColor('BLUE')
@@ -14,7 +14,7 @@ exports.run = async(client, msg, args) => { // Modification. baca dm lg.
     msg.channel.send(embed)
   }
   
-  if(optic.match('dm')) {
+  if(opti.match('dm')) {
     let embed = new Djs.RichEmbed()
     .setTitle('Help Command')
     .setColor('BLUE')
