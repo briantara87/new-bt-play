@@ -284,7 +284,7 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
 
     var addedembed = new RichEmbed()
     .setColor('RANDOM')
-    .setAuthor(`🎶 Added Queue:`)
+    .setAuthor(`<:music:594866513555750951> Added Queue:`)
     .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=120&height=60`)
     .setDescription(`**[${song.title}](${song.url})**`)
     .addField("Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
@@ -322,7 +322,7 @@ function play(guild, song, message) {
   
   var playembed = new RichEmbed()
   .setColor('RANDOM')
-  .setAuthor(`🎶 Start Playing:`)
+  .setAuthor(`Start Playing:`, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
   .setDescription(`**[${song.title}](${song.url})**`)
   .addField("Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
