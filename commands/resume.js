@@ -1,6 +1,7 @@
-const { handleVideo, youtube, queue } = require("../index.js");
+const { handleVideo, youtube } = require("../index.js");
 
 exports.run = async(client, msg, args) => {
+  const queue = new Map()//baru bisa
   var serverQueue = queue.get(msg.guild.id);
   
   if (serverQueue && !serverQueue.playing) {

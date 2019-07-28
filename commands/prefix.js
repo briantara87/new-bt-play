@@ -10,12 +10,13 @@ exports.run = async (client, msg, args) => {
     prefix: args[0]
   }
   
-  fs.writeFile("./crafty.json", JSON.stringify(crafty), (err) => {
+  fs.writeFile("./prefixes.json", JSON.stringify(crafty), (err) => {
      if(err) console.log(err);
   })
   
   msg.channel.send(`Prefix has been set to ${args[0]}`);
-}
+}//w ada nih project sky craft :V // buat apaan? :V
+//w soalny disuruh jaga dia kgk on sampe 4 bln an//pantes w spam pake bot pun ga dijawab,//gmn loop ne nih?
 exports.conf = {
   aliases: ['prf']
 }

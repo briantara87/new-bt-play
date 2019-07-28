@@ -2,6 +2,7 @@ const { queue } = require("../index.js");
 
 exports.run = async(client, msg, args) => {
     var serverQueue = queue.get(msg.guild.id);
+   const queue = new Map()
   
     if (!msg.member.voiceChannel) return msg.channel.send('You are not in a voice channel!');
 		if (!serverQueue) return msg.channel.send('There is nothing playing that I could skip for you.');

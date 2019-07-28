@@ -1,7 +1,8 @@
 const { handleVideo, youtube, queue } = require("../index.js");
 
 exports.run = async(client, msg, args) => {
-  var serverQueue = queue.get(msg.guild.id);
+  const queue = new Map()
+const serverQueue = queue.get(msg.guild.id);
   
   if (serverQueue && serverQueue.playing) {
 			serverQueue.playing = false;
