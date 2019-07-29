@@ -1,6 +1,6 @@
 // KUMPULAN CONST
 const Discord = require("discord.js");
-const { Client, Util, RichEmbed, MessageEmbed, Collection } = require('discord.js');
+const { Client, Util, RichEmbed, MessageEmbed, Collection, Uptime } = require('discord.js');
 const http = require('http');
 const express = require('express');
 const app = express();
@@ -162,10 +162,17 @@ client.on('message', async msg => {
 //End of code Prefix Command
   if (msg == `<@${client.user.id}>` || msg == `<@!${client.user.id}>`) {
     let tagEmbed = new Discord.RichEmbed()
-    .setThumbnail(client.user.displayAvatarURL) // ok!
-    .setColor('RANDOM')
-    .setTitle(`${client.user.username} Prefix`)
-    .setDescription(`Global Prefix =  (**^**) \nPrefix In This Server =  (**${crafty[msg.guild.id].prefix}**)`);
+    .setAuthor(`Hibiki | 響`, client.user.avatarURL)
+                .addField(`Version`, `1.0`, true)
+                .addField(`Node JS`, `8.11.3`, true)
+                .addField(`Library`, `[discord.js](https://discord.js.org/#/)`, true)
+                .addField(`Servers`, `${client.guilds.size}`, true)
+                .addField(`Users`, `${client.users.size}`, true)
+                .addField(`Invite`, `[Not available yet](https://discord.gg/NNwzMm)`, true)
+                .addField(`Developer`, `Zay#5616`, true)
+                .setFooter("Prefix: z! | This bot is still under construction", "https://a.ppy.sh/5414370_1530431526.jpeg")
+                .setTimestamp()
+                .setColor(0xFF0092);
     msg.channel.send(tagEmbed);
 }
   

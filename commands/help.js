@@ -31,8 +31,8 @@ exports.run = (bot, message, args, client) => {
         let diff = (Date.now() - start); 
         let API = Math.round((bot.ping).toFixed())
         let embed = new RichEmbed()
-        .setAuthor(`Zetsuya`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
-        .setTitle(`:question: There is 9 Commands            |             :satellite: And your Latency`)
+        .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
+        .setTitle(`- There is 9 Commands | - And your Latency`)
         .setColor(`RANDOM`)
         .addField("Commands", "`play` `pause` `loop` `queue` `resume` `skip` `stop` `volume ` `reload`",`true`)
         .addField("Latency", `${diff}ms`, "true") 
