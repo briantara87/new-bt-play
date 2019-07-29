@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
   .setTitle("Reload")
   .setDescription("Sorry, this command only can be executed by developer!")
   .setColor("RANDOM");
-  if(message.author.id !== '369404151416750082') return message.channel.send(embed);
+  if(message.author.id !== '395407295867256833') return message.channel.send(embed);
   try{
     delete require.cache[require.resolve(`./${args[0]}`)];
   let Aembed = new Discord.RichEmbed()
