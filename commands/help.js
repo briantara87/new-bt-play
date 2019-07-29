@@ -27,7 +27,7 @@ const { RichEmbed, Client } = require("discord.js");
 //
 exports.run = (bot, message, args, client) => {
    let start = Date.now(); message.channel.send('_ _').then(message => { 
-      message.delete(500);
+      message.delete(1);
         let diff = (Date.now() - start); 
         let API = Math.round((bot.ping).toFixed())
         let embed = new RichEmbed()
