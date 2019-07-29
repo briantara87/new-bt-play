@@ -25,12 +25,13 @@ const { RichEmbed, Client } = require("discord.js");
 //    msg.author.send(embed)
 //  }
 //
-exports.run = (bot, message, args) => {
+exports.run = (bot, message, args, client) => {
    let start = Date.now(); message.channel.send('_ _').then(message => { 
       message.delete(500);
         let diff = (Date.now() - start); 
         let API = Math.round((bot.ping).toFixed())
         let embed = new RichEmbed()
+        .setAuthor(`Zetsuya`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
         .setTitle(`:question: There is 9 Commands            |             :satellite: And your Latency`)
         .setColor(`RANDOM`)
         .addField("Commands", "`play` `pause` `loop` `queue` `resume` `skip` `stop` `volume ` `reload`",`true`)
