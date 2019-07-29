@@ -26,18 +26,17 @@ const { RichEmbed, Client } = require("discord.js");
 //  }
 //
 exports.run = (bot, message, args) => {
-   let start = Date.now(); message.channel.send(':ping_pong:').then(message => { 
+   let start = Date.now(); message.channel.send('_ _').then(message => { 
       message.delete(500);
         let diff = (Date.now() - start); 
         let API = Math.round((bot.ping).toFixed())
         let embed = new RichEmbed()
-        .setTitle(`:question: There is 9 Commands`)
+        .setTitle(`:question: There is 9 Commands            |             :satellite: And your Latency`)
         .setColor(`RANDOM`)
-        .addField("Music", "`play` `pause` `loop` `queue` `resume` `skip` `stop` `volume ` `reload`",`true`)
+        .addField("Commands", "`play` `pause` `loop` `queue` `resume` `skip` `stop` `volume ` `reload`",`true`)
         .addField("Latency", `${diff}ms`, "true") 
         .addField("API", `${API}ms`, true) 
-        .addField("Prefix", "z!", true)
-        .addField("_ _", "_ _", "false")              
+        .addField("Prefix", "z!", true)            
         .setFooter("©Zetsuya Bot | 2019 | Zay#5616")
         message.channel.send(embed);
 })}
