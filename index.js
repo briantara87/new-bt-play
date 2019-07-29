@@ -162,17 +162,15 @@ client.on('message', async msg => {
 //End of code Prefix Command
   if (msg == `<@${client.user.id}>` || msg == `<@!${client.user.id}>`) {
     let tagEmbed = new Discord.RichEmbed()
-    .setAuthor(`Hibiki | 響`, client.user.avatarURL)
-                .addField(`Version`, `1.0`, true)
-                .addField(`Node JS`, `8.11.3`, true)
+    .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
+                .addField(`Version`, `0.0.1a`, true)
+                .addField(`Node JS`, `9.x`, true)
                 .addField(`Library`, `[discord.js](https://discord.js.org/#/)`, true)
                 .addField(`Servers`, `${client.guilds.size}`, true)
                 .addField(`Users`, `${client.users.size}`, true)
-                .addField(`Invite`, `[Not available yet](https://discord.gg/NNwzMm)`, true)
                 .addField(`Developer`, `Zay#5616`, true)
-                .setFooter("Prefix: z! | This bot is still under construction", "https://a.ppy.sh/5414370_1530431526.jpeg")
-                .setTimestamp()
-                .setColor(0xFF0092);
+                .setFooter("Prefix: z! | This bot is still under Development", "https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png")
+                .setColor(`RANDOM`);
     msg.channel.send(tagEmbed);
 }
   

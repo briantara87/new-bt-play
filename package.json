@@ -1,6 +1,6 @@
 {
   "name": "Zetsuya",
-  "version": "2.3.4b1",
+  "version": "0.0.1a",
   "description": "Moderation bot",
   "main": "mainbot.js",
   "scripts": {
