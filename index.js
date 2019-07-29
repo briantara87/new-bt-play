@@ -162,15 +162,17 @@ client.on('message', async msg => {
 //End of code Prefix Command
   if (msg == `<@${client.user.id}>` || msg == `<@!${client.user.id}>`) {
     let tagEmbed = new Discord.RichEmbed()
+    
     .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
-                .addField(`Version`, `0.0.1a`, true)
+                .setcolor(`RANDOM`)
+     .addField(`Version`, `0.0.1a`, true)
                 .addField(`Node JS`, `9.x`, true)
                 .addField(`Library`, `[discord.js](https://discord.js.org/#/)`, true)
                 .addField(`Servers`, `${client.guilds.size}`, true)
                 .addField(`Users`, `${client.users.size}`, true)
                 .addField(`Developer`, `Zay#5616`, true)
-                .setFooter(`Zay#5616 | Prefix: z! | This bot is still under Development`, "https://images-ext-1.discordapp.net/external/J-5BqHjIWhkjWpR_Hbjx_ehV5fdnwUvdO2_TkutUHiY/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/395407295867256833/49438588968c9aba90c8d98b04519014.png")
-                .setColor(`RANDOM`);
+                .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
+                .setTimestamp()
     msg.channel.send(tagEmbed);
 }
   
@@ -298,7 +300,8 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
   .addField(':loud_sound: Voice Channel:', song.voicechan, true)
   .addField('👤 Requested By:', song.authors.tag, true)
   .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
-  .setTimestamp();
+  .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
+                .setTimestamp()
     serverQueue.songs.push(song);
     console.log(serverQueue.songs);
     if (playlist) return undefined;
@@ -338,7 +341,8 @@ function play(guild, song) {
   .addField(':loud_sound: Voice Channel:', song.voicechan, true)
   .addField('👤 Requested By:', song.authors.tag, true)
   .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
-  .setTimestamp();
+  .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
+                .setTimestamp()
   
 	serverQueue.textChannel.send(playembed);
 }

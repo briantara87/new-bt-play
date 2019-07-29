@@ -1,5 +1,5 @@
 const Djs = require("discord.js");
-const { RichEmbed, Client, song } = require("discord.js");
+const { RichEmbed, Client } = require("discord.js");
 
 
 //dule.exports.run = async (client, msg, args) => { // Modification. baca dm lg.
@@ -38,7 +38,8 @@ exports.run = (bot, message, args, client) => {
         .addField("Latency", `${diff}ms`, "true") 
         .addField("API", `${API}ms`, true) 
         .addField("Prefix", "z!", true)            
-        .setFooter(`${song.author.tag} | Prefix: z! | This bot is still under Development`, "https://images-ext-1.discordapp.net/external/J-5BqHjIWhkjWpR_Hbjx_ehV5fdnwUvdO2_TkutUHiY/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/395407295867256833/49438588968c9aba90c8d98b04519014.png")
+        .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
+        .setTimestamp()
         message.channel.send(embed);
 })}
 exports.conf = { //Auto fokus anjir. uwau. anying speaker w rusak.z
