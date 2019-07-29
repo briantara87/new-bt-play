@@ -30,10 +30,10 @@ exports.run = (bot, message, args) => {
         .setTitle(`:question: There is 13 Commands`)
         .setColor(`RANDOM`)
         .addField("Music", "`play` `pause` `loop` `queue` `resume` `skip` `stop` `volume ` `reload`",`true`)
-        .addField("Another", "`help` `ping`", "true")
-        .addField("My Prefix is 'z!'", "", "true")
-        .addField("", "", "true")
-        .setFooter("©Zetsuya Bot | 2019   `Zay#5616`")
+        .addField("Another", "`help` `ping`", "true")    
+        .addField("My Prefix is `z!`", "_ _", "true")
+        .addField("_ _", "_ _", "false")              
+        .setFooter("©Zetsuya Bot | 2019 |Zay#5616")
         message.channel.send(embed);
 }
 exports.conf = { //Auto fokus anjir. uwau. anying speaker w rusak.z
