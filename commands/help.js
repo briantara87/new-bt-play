@@ -4,6 +4,9 @@ module.exports.run = async (client, msg, args) => { // Modification. baca dm lg.
   let opti = args.slice(0).join(' ')
   let optic = opti.toLocaleLowerCase()
   if(!opti) return msg.channel.send('help here\nhelp dm')
+  if(command === 'help'){
+    let embed = new
+  }
   
   if(opti.match('here')) {
     let embed = new Djs.RichEmbed()
