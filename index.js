@@ -287,7 +287,7 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
 		if (playlist) return undefined;
 
     var addedembed = new RichEmbed()
-    .setColor('RANDOM')
+    .setColor(`#ecd4fc`)
   .setAuthor(`Added to queue:`, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
   .setDescription(`**[${song.title}](${song.url})**`)
@@ -296,7 +296,7 @@ async function handleVideo(video, message, voiceChannel, playlist = false) {
   .addField(':loud_sound: Voice Channel:', song.voicechan, true)
   .addField('👤 Requested By:', song.authors.tag, true)
   .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
-  .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
+  .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
   .setTimestamp()
     serverQueue.songs.push(song);
     console.log(serverQueue.songs);
@@ -328,7 +328,7 @@ function play(guild, song) {
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 100);
   
   var playembed = new RichEmbed()
-  .setColor('RANDOM')
+  .setColor(`#ecd4fc`)
   .setAuthor(`Start Playing:`, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
   .setDescription(`**[${song.title}](${song.url})**`)
@@ -337,7 +337,7 @@ function play(guild, song) {
   .addField(':loud_sound: Voice Channel:', song.voicechan, true)
   .addField('👤 Requested By:', song.authors.tag, true)
   .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
-  .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
+  .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
   .setTimestamp()
   
 	serverQueue.textChannel.send(playembed);

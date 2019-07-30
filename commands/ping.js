@@ -7,9 +7,10 @@ exports.run = (bot, message, args) => {
         let API = Math.round((bot.ping).toFixed())
         let embed = new RichEmbed()
         .setTitle(`:ping_pong: Pong!`)
-        .setColor(`RANDOM`)
+        .setColor(`#ecd4fc`)
         .addField("Latency", `${diff}ms`, true)
         .addField("API", `${API}ms`, true)
+        .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
         message.channel.send(embed);
     });
 }

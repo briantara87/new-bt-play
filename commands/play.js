@@ -45,7 +45,7 @@ exports.run = async (bot, msg, args) => {
 					var videos = await youtube.searchVideos(searchString, 10);
 					let index = 0;
           let embedplay = new RichEmbed()
-          .setColor('RANDOM') 
+          .setColor(`#ecd4fc`) 
 				  .setTitle('Song selection')
 				  .setDescription(`${videos.map(video2 => `**${++index} -** ${video2.title}`).join('\n')}`) 
           .setFooter('Please provide a value to select one of the search results ranging from 1-10.')

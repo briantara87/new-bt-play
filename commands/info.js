@@ -10,12 +10,12 @@ exports.run = (bot, message, args) => {
     .addField(`Version`, `0.0.1a`, true)
     .addField(`Node JS`, `9.x`, true)
     .addField(`Library`, `[discord.js](https://discord.js.org/#/)`, true)
-                .addField(`Website`, `[hibikimoe.xyz](https://hibikimoe.xyz/)`, true)
-                .addField(`Discord`, `[hibikimoe.xyz/discord](https://discord.gg/NNwzMm)`, true)
+                .addField(`Support`, `[Glitch.com](https://glitch.com)`, true)
+                .addField(`Discord`, `[MaDocsDevelopment](https://discord.gg/Xdcbk2X)`, true)
     .addField(`Developer`, `Zay#5616`, true)
-    .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
+    .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
     .setTimestamp()
-    .setColor(`RANDOM`)
+    .setColor(`#ecd4fc`)
         message.channel.send(embed);
     });
 }
