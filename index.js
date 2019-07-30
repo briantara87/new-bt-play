@@ -171,7 +171,6 @@ client.on('message', async msg => {
     .addField(`Users`, `${client.users.size}`, true)
     .addField(`Developer`, `Zay#5616`, true)
     .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
-    .setTimestamp()
     msg.channel.send(tagEmbed);
 }
   
