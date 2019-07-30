@@ -344,6 +344,9 @@ function play(guild, song) {
   
 	serverQueue.textChannel.send(playembed);
 }
+
+          
 // ============================================================================================================================================
 
+  
 client.login(process.env.TOKEN);
