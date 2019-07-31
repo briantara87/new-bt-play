@@ -10,7 +10,7 @@ exports.run = (bot, message, args) => {
     .addField(`Version`, `0.0.1a`, true)
     .addField(`Node JS`, `9.x`, true)
     .addField(`Library`, `[discord.js](https://discord.js.org/#/)`, true)
-    //.addField(`Users`, `${client.user.size}`, true) jangan di aktifin. mau test.
+    .addField(`• Users, Servers, and Channels`, `**» Users** \`${client.users.size}\`\n**» Servers** \`${client.guilds.size}\`\n**» Channels** \`${client.channels.size}\``)
                 .addField(`Support`, `[Glitch.com](https://glitch.com)`, true)
                 .addField(`Discord`, `[MaDocsDevelopment](https://discord.gg/Xdcbk2X)`, true)
     .addField(`Developer`, `Zay#5616`, true)
