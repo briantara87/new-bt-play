@@ -1,5 +1,39 @@
 const { RichEmbed, Client, uptime, client } = require("discord.js");
+const Discord = require("discord.js");
+const moment = require("moment");
+const cfg = require('../config.json')
+function convertMS(ms) {
+    var d, h, m, s;
+    s = Math.floor(ms / 1000);
+    m = Math.floor(s / 60);
+    s = s % 60;
+    h = Math.floor(m / 60);
+    m = m % 60;
+    d = Math.floor(h / 24);
+    h = h % 24;
+    return {
+        d: d
+        , h: h
+        , m: m
+        , s: s
+    };
+};
+exports.run = async (client, msg, args) => {
+  let message = msg
+  let bot = client
+    let u = convertMS(bot.uptime);
+    let uptime = u.d + " days : " + u.h + " hours : " + u.m + " minutes : " + u.s + " seconds"
+    const duration = moment.duration(bot.uptime)
+    let bicon = bot.user.displayAvatarURL;
+    const botembed = new Discord.RichEmbed()
+      .setTitle('My Uptime')
+      .setColor(`RANDOM`)
+      .setDescription(`**Uptime :**  ${uptime}`)
+      .setThumbnail(bicon)
+      .setFooter(`${cfg.botname} | by ${cfg.owner}`, cfg.botavatar);
 
+    message.channel.send(botembed);
+}
 exports.run = (bot, message, args) => {
    let start = Date.now(); message.channel.send('_ _').then(message => { 
       message.delete(1);
@@ -19,6 +53,7 @@ exports.run = (bot, message, args) => {
                 .addField(`Support`, `[Glitch.com](https://glitch.com)\n_ _`, true)
                 .addField(`Discord`, `[MaDocsDevelopment](https://discord.gg/Xdcbk2X)`, true)
     .addField(`Developer`, `[Zay#5616](https://github.com/Zay-Development)`, true)
+        .addField(`Uptime`)
     .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
     .setTimestamp()
     .setColor(0xECD4FC)
