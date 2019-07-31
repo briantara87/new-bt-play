@@ -57,7 +57,7 @@ require("./server.js");
 function random_playing(bot)  {
   let status = [`${client.users.size} Users`, `${client.channels.size} Channels`, `${client.guilds.size} Server`] // You cant set anything playing you want it!
   let random = status[Math.floor(Math.random() * status.length)]
-  client.user.setActivity(random, {type: "Watching"}); 
+  client.user.setActivity(random, {type: "WATCHING"}); 
 }//ngk ada error kan?tapi kok ngk muncul//btr//thx
 
 client.on('ready', () => {
@@ -71,7 +71,7 @@ With ${client.channels.size} channels
 `
   
   console.log(clientlog);
-  setInterval(random_playing, 1000);
+  setInterval(random_playing, 5000);
 });
 
 client.on('guildMemberAdd', async member => {
