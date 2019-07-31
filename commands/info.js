@@ -10,18 +10,18 @@ exports.run = (bot, message, args) => {
         .addField(`Name`, `Zetsuya`, true)
         .addField(`Discriminator`, `#1862`, true)
         .addField(`Global Prefix`, `z!`, true)
-        .addField(`Version`, `0.0.1a`, true)
-    .addField(`Node JS`, `9.x`, true)
+        .addField(`Version`, `[0.0.4a](https://github.com/Zay-Development/Zetsuya-Bot/tree/master)`, true)
+    .addField(`Node JS`, `[9.11.2](https://nodejs.org/en)`, true)
     .addField(`Library`, `[discord.js](https://discord.js.org/#/)`, true)
     .addField(`Server`, `${bot.guilds.size}`, "true")
         .addField(`Channels`, `${bot.channels.size}`, "true")
         .addField(`Users`, `${bot.users.size}`, "true")
-                .addField(`Support`, `[Glitch.com](https://glitch.com)`, true)
+                .addField(`Support`, `[Glitch.com](https://glitch.com)\n_ _`, true)
                 .addField(`Discord`, `[MaDocsDevelopment](https://discord.gg/Xdcbk2X)`, true)
-    .addField(`Developer`, `Zay#5616`, true)
+    .addField(`Developer`, `[Zay#5616](https://github.com/Zay-Development)`, true)
     .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
     .setTimestamp()
-    .setColor(`#ecd4fc`)
+    .setColor(0xECD4FC)
         message.channel.send(embed);
     });
 }

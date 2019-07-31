@@ -34,7 +34,7 @@ exports.run = (bot, message, args, client) => {
         .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
         .setTitle(`- There is 10 Commands` )
         .setColor(`#ecd4fc`)
-        .addField("Commands", "`play` `pause` `loop` `queue` `resume` `skip` `stop` `volume ` `info` `invite` ",`false`)
+        .addField("Commands", "```<HELP>\n#if you need help to use this bot\n<INFO>\n#information of the bot",`false`)
         .addField("Other commands will be added soon :ok_hand:","_ _","true")         
         .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
         .setTimestamp()
