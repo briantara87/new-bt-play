@@ -22,13 +22,13 @@ exports.run = (bot, message, args) => {
    let start = Date.now(); message.channel.send('_ _').then(message => { 
       message.delete(1);
      let u = convertMS(bot.uptime);
-    let uptime = u.d + " days : " + u.h + " hours : " + u.m + " minutes : " + u.s + " seconds"
+    let uptime = u.d + " days " + u.h + " hours " + u.m + " minutes " + u.s + " seconds"
     const duration = moment.duration(bot.uptime)
         let diff = (Date.now() - start); 
         let API = Math.round((bot.ping).toFixed())
         let embed = new RichEmbed()
     .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
-        .setThumbnail(bot.user.avatarURL)
+        
         .addField(`Name`, `Zetsuya`, true)
         .addField(`Discriminator`, `#1862`, true)
         .addField(`Global Prefix`, `z!`, true)
@@ -42,7 +42,7 @@ exports.run = (bot, message, args) => {
                 .addField(`Discord`, `[MaDocsDevelopment](https://discord.gg/Xdcbk2X)`, true)
     .addField(`Developer`, `[Zay#5616](https://github.com/Zay-Development)`, true)
         .addField(`Uptime`, `${uptime}`, `true`)
-        .addField(`Created`, `${bot.user.createdAt}`, `true`)
+        .addField(`Created`, `${bot.user.createdAt.toLocaleString()}`, `true`)
     .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
     .setTimestamp()
     .setColor(0xECD4FC)
