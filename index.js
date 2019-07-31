@@ -55,7 +55,7 @@ require("./server.js");
 
 
 function random_playing() {
-  let status = [`z!help | z!invite`, `Bot by Zay#5616`] // You cant set anything playing you want it!
+  let status = [`z!help | z!invite`, `z!cmds | Under development`] // You cant set anything playing you want it!
   let random = status[Math.floor(Math.random() * status.length)]
   client.user.setActivity(random, {type: "STREAMING", url: 'https://www.twitch.tv/zetsuya'}); 
 }
