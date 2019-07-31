@@ -53,12 +53,12 @@ if(!file.conf || !file.conf.aliases) continue;
 
 require("./server.js");
 
-
+//coba restart.//ga jadi. gw aja.//dah tuh.
 function random_playing(bot)  {
-  let status = [`Zetsuya serving ${bot.users.size} Users`, `Zetsuya watching ${bot.channels.size} Channels`, `Zetsuya on ${bot.guilds.size} Server`] // You cant set anything playing you want it!
+  let status = [`${client.users.size} Users`, `${client.channels.size} Channels`, `${client.guilds.size} Server`] // You cant set anything playing you want it!
   let random = status[Math.floor(Math.random() * status.length)]
-  client.user.setActivity(random, {type: "STREAMING", url: 'https://www.twitch.tv/zetsuya'}); 
-}//ngk ada error kan?tapi kok ngk muncul//btr
+  client.user.setActivity(random, {type: "Watching"}); 
+}//ngk ada error kan?tapi kok ngk muncul//btr//thx
 
 client.on('ready', () => {
   var clientlog = `
