@@ -18,29 +18,17 @@ function convertMS(ms) {
         , s: s
     };
 };
-exports.run = async (client, msg, args) => {
-  let message = msg
-  let bot = client
-    let u = convertMS(bot.uptime);
-    let uptime = u.d + " days : " + u.h + " hours : " + u.m + " minutes : " + u.s + " seconds"
-    const duration = moment.duration(bot.uptime)
-    let bicon = bot.user.displayAvatarURL;
-    const botembed = new Discord.RichEmbed()
-      .setTitle('My Uptime')
-      .setColor(`RANDOM`)
-      .setDescription(`**Uptime :**  ${uptime}`)
-      .setThumbnail(bicon)
-      .setFooter(`${cfg.botname} | by ${cfg.owner}`, cfg.botavatar);
-
-    message.channel.send(botembed);
-}
 exports.run = (bot, message, args) => {
    let start = Date.now(); message.channel.send('_ _').then(message => { 
       message.delete(1);
+     let u = convertMS(bot.uptime);
+    let uptime = u.d + " days : " + u.h + " hours : " + u.m + " minutes : " + u.s + " seconds"
+    const duration = moment.duration(bot.uptime)
         let diff = (Date.now() - start); 
         let API = Math.round((bot.ping).toFixed())
         let embed = new RichEmbed()
     .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
+        .setDescription(`Uptime : ${uptime}`)
         .addField(`Name`, `Zetsuya`, true)
         .addField(`Discriminator`, `#1862`, true)
         .addField(`Global Prefix`, `z!`, true)
@@ -53,7 +41,6 @@ exports.run = (bot, message, args) => {
                 .addField(`Support`, `[Glitch.com](https://glitch.com)\n_ _`, true)
                 .addField(`Discord`, `[MaDocsDevelopment](https://discord.gg/Xdcbk2X)`, true)
     .addField(`Developer`, `[Zay#5616](https://github.com/Zay-Development)`, true)
-        .addField(`Uptime`)
     .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
     .setTimestamp()
     .setColor(0xECD4FC)
