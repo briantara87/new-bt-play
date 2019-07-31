@@ -54,12 +54,11 @@ if(!file.conf || !file.conf.aliases) continue;
 require("./server.js");
 
 
-function random_playing()  {
-exports.run = (bot, message, args) => {
+function random_playing(bot)  {
   let status = [`Zetsuya serving ${bot.users.size} Users`, `Zetsuya watching ${bot.channels.size} Channels`, `Zetsuya on ${bot.guilds.size} Server`] // You cant set anything playing you want it!
   let random = status[Math.floor(Math.random() * status.length)]
   client.user.setActivity(random, {type: "STREAMING", url: 'https://www.twitch.tv/zetsuya'}); 
-}}
+}//ngk ada error kan?tapi kok ngk muncul//btr
 
 client.on('ready', () => {
   var clientlog = `
