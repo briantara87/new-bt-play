@@ -40,10 +40,3 @@ exports.run = (bot, message, args, client) => {
         .setTimestamp()
         message.channel.send(embed);
 })}
-exports.conf = { //Auto fokus anjir. uwau. anying speaker w rusak.z
-  aliases: ['h']
-}
-
-exports.help = {
-  name: "Help"
-}
