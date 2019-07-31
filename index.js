@@ -54,11 +54,12 @@ if(!file.conf || !file.conf.aliases) continue;
 require("./server.js");
 
 
-function random_playing(bot, message, arg) {
-  let status = [`z!help | z!invite`, `z!cmds | Under development`] // You cant set anything playing you want it!
+function random_playing()  {
+exports.run = (bot, message, args) => {
+  let status = [`Zetsuya serving ${bot.users.size} Users`, `Zetsuya watching ${bot.channels.size} Channels`, `Zetsuya on ${bot.guilds.size} Server`] // You cant set anything playing you want it!
   let random = status[Math.floor(Math.random() * status.length)]
   client.user.setActivity(random, {type: "STREAMING", url: 'https://www.twitch.tv/zetsuya'}); 
-}
+}}
 
 client.on('ready', () => {
   var clientlog = `
@@ -71,7 +72,7 @@ With ${client.channels.size} channels
 `
   
   console.log(clientlog);
-  setInterval(random_playing, 8000);
+  setInterval(random_playing, 1000);
 });
 
 client.on('guildMemberAdd', async member => {
