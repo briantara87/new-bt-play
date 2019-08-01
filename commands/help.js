@@ -2,15 +2,19 @@ const Djs = require("discord.js");
 const { RichEmbed, Client } = require("discord.js");
 const fs = require("fs")
 
+
+
 //
-exports.run = async (bot, message, args, client, msg, prefix) => {
+     
+
+    const args = msg.content.slice(prefix.length).trim().split(' ');
         let embed = new RichEmbed()
         .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
         .setColor(`#ecd4fc`)
         .setThumbnail(bot.user.avatarURL)
         .addField("If you have a question / bug report please report them on", "[Discord](https://discord.gg/Xdcbk2X)\n_ _",`false`)
         .addField("Documentation can be found at","[Github](https://github.com/Zay-Development/Zetsuya-Bot/tree/master)\n_ _", "false")
-        .addField(`_ _`, `${prefix}`, `false`)
+        .addField(`Are you don't know how to use this bot? do :`, `${prefix}`, `false`) //Kenapa? ~andra//pen biar prefix per server nya muncul///oh wait
         .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
         .setTimestamp()
         message.channel.send(embed);
