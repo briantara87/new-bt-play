@@ -34,7 +34,7 @@ exports.run = (bot, message, args) => {
     .addField(`Server`, `${bot.guilds.size}`, "true")
         .addField(`Channels`, `${bot.channels.size}`, "true")
         .addField(`Users`, `${bot.users.size}`, "true")
-                .addField(`Support`, `[Glitch.com](https://glitch.com)\n_ _`, true)
+                .addField(`Support`, `[Glitch.com](https://glitch.com)`, true)
                 .addField(`Discord`, `[MaDocsDevelopment](https://discord.gg/Xdcbk2X)`, true)
     .addField(`Developer`, `[Zay#5616](https://github.com/Zay-Development)`, true)
         .addField(`Uptime`, `${uptime}`, `true`)
