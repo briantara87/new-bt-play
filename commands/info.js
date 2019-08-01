@@ -1,7 +1,9 @@
 const { RichEmbed, Client, uptime, client } = require("discord.js");
 const Discord = require("discord.js");
 const moment = require("moment");
+const fs = require("fs");
 const cfg = require('../config.json')
+const config = require("../config.json");
 function convertMS(ms) {
     var y, mt, w, d, h, m, s;
     s = Math.floor(ms / 1000);
@@ -18,22 +20,31 @@ function convertMS(ms) {
     y = Math.floor(mt / 12);
     mt = d % 12;
     return {
-        d: d
+      y: y
+      , mt: mt
+      , w: w
+        , d: d
         , h: h
         , m: m
         , s: s
     };
 };
 exports.run = (bot, message, args) => {
+    let crafty = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+  if(!crafty[message.guild.id]){ 
+     crafty[message.guild.id] = {
+       prefix: config.prefix
+     }
+  }
      let u = convertMS(bot.uptime);
-    let uptime = u.y + " /" + u.mt + " /" + u.w + " /" + u.d + " " + u.h + "" + u.m + ":" + u.s + ""
+    let uptime = u.y + "-" + u.mt + "-" + u.w + "-" + u.d + " " + u.h + ":" + u.m + ":" + u.s + ""
     const duration = moment.duration(bot.uptime)
         let embed = new RichEmbed()
     .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
         
         .addField(`Name`, `Zetsuya`, true)
         .addField(`Discriminator`, `#1862`, true)
-        .addField(`Global Prefix`, `z!`, true)
+        .addField(`Prefix`, `${crafty[message.guild.id].prefix}`, true)
         .addField(`Version`, `[0.0.4a](https://github.com/Zay-Development/Zetsuya-Bot/tree/master)`, true)
     .addField(`Node JS`, `[9.11.2](https://nodejs.org/en)`, true)
     .addField(`Library`, `[discord.js](https://discord.js.org/#/)`, true)
@@ -43,8 +54,9 @@ exports.run = (bot, message, args) => {
                 .addField(`Support`, `[Glitch.com](https://glitch.com)`, true)
                 .addField(`Discord`, `[MaDocsDevelopment](https://discord.gg/Xdcbk2X)`, true)
     .addField(`Developer`, `[Zay#5616](https://github.com/Zay-Development)`, true)
+        .addField(`Format time`, `yyyy/mm/dd hh:mm:ss`, `true`)
         .addField(`Uptime`, `${uptime}`, `true`)
-        .addField(`Created`, `${bot.user.createdAt.toLocaleString()}`, `true`)
+        .addField(`Created at`, `${bot.user.createdAt.toLocaleString()}`, `true`)
     .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
     .setTimestamp()
     .setColor(0xECD4FC)
