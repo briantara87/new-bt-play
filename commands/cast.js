@@ -6,7 +6,7 @@ const member = message.mentions.members.first() || message.guild.members.get(arg
   
 
   let emb = new Discord.RichEmbed()
-  .addField(`${member.user.username} Says`, cmd[0], true)
+  .addField(`${member.user.username}#${member.user.descriminator} Says`, cmd[0], true)
   .setColor(`RANDOM`)
   .setTimestamp()
 
