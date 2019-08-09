@@ -29,10 +29,9 @@ if (member.user.bot === true) {
                 .addField("ID", member.user.id, inline)
                 .addField("Bot", `${bot}`,inline, true)
                 .addField("Status", `${status[member.user.presence.status]}`, inline, true)
-                .addField("Playing", `${member.user.presence.game ? `🎮 ${member.user.presence.game.name}` : "Not playing"}`,inline, true)
-                .addField("Roles", `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `${roles.name}`).join(" **|** ") || "No Roles"}`, true)
-                .addField("Acc Created at", member.user.createdAt.toLocaleString(), true)
-                .setFooter(`Information about ${member.user.username}`)
+            .addField("Acc Created at", member.user.createdAt.toLocaleString(), true)
+                .addField("Roles", `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
+                .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
                 .setTimestamp()
     
             message.channel.send(embed);
