@@ -1,13 +1,12 @@
 const Discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
-
-  if(message.author.id !== "395407295867256833") return;
-
+const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
   const cmd = args.join(' ').split(' | ')
+  
 
   let emb = new Discord.RichEmbed()
-  .addField(`Embed Output`, cmd[0], true)
+  .addField(`${member.user.username} Says`, cmd[0], true)
   .setColor(`RANDOM`)
   .setTimestamp()
 
