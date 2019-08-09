@@ -7,9 +7,8 @@ module.exports.run = async (bot, message, args) => {
   const cmd = args.join(' ').split(' | ')
 
   let emb = new Discord.RichEmbed()
-  .setTitle(cmd[0])
-  .setColor(cmd[1])
-  .setDescription(cmd[2])
+  .addField(`Embed Output`, cmd[0], true)
+  .setColor(`RANDOM`)
   .setTimestamp()
 
   message.channel.send(emb)
