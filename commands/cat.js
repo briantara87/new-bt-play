@@ -11,7 +11,8 @@ module.exports.run = async (bot, message, args) => {
                     .setColor("0xECD4FC")
                     .setTitle("Here is your random cat")
                               
-                   message.channel.send(emb)  
+                   message.channel.send(emb) 
+              message.delete();
             }
         });
     }

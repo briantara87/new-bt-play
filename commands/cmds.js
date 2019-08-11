@@ -23,4 +23,5 @@ exports.run = (bot, message, args, client) => {
         .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
         .setTimestamp()
         message.channel.send(embed);
+  message.delete();
 }

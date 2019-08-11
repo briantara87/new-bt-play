@@ -35,6 +35,7 @@ if (member.user.bot === true) {
                 .setTimestamp()
     
             message.channel.send(embed);
+  
 
     }
 

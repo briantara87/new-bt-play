@@ -26,6 +26,7 @@ exports.run = async(client, message, args) => { // Modification
         .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
         .setTimestamp()
         message.channel.send(embed);
+  message.delete();
 }
 exports.conf = { //Auto fokus anjir. uwau. anying speaker w rusak.z
   aliases: ['h']
