@@ -169,8 +169,8 @@ client.on('message', async msg => {
     .addField(`Developer`, `Zay#5616`, true)
     .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
     .setColor(`RANDOM`)
-    msg.channel.send(tagEmbed); */
-}
+    msg.channel.send(tagEmbed); 
+}*/
   
   //let xpadd = Math.floor(Math.random() * 5) + 10
   //console.log(xpadd);
