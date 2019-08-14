@@ -10,7 +10,7 @@ exports.run = async(client, msg, args) => {
     serverQueue.volume = args[0];
 		if (args[0] > 100) return !serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100) +
     msg.channel.send(`Hey, ${msg.author} The volume limit is 100%!`)
-    if (args[0] < 106) return serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100) + msg.channel.send(`I set the volume to: **${args[0]}**%`);
+    if (args[0] < 106) return serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100) + msg.channel.send(`Alright, i set the volume to **${args[0]}**%`);
 }
 
 exports.conf = {
