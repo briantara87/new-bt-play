@@ -290,15 +290,14 @@ console.log(video);
 
     var addedembed = new RichEmbed()
     .setColor(`#ecd4fc`)
-  .setAuthor(`Added to queue:`, `https://cdn.discordapp.com/emojis/604953622068985897.png?v=1`)
+  //.setAuthor(`Added to queue:`, `https://cdn.discordapp.com/emojis/604953622068985897.png?v=1`)
     .setDescription(`**[${song.title}](${song.url})**`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
   .setFooter(`Requested By ${song.authors.tag}`)
-  .setTimestamp()
     serverQueue.songs.push(song);
     console.log(serverQueue.songs);
     if (playlist) return undefined;
-    else return message.channel.send(addedembed);
+    else return message.channel.send(`<:mAdd:603846847127093248> ${song.title} added!`, addedembed);
   }
   return undefined;
 }
@@ -334,7 +333,6 @@ function play(guild, song) {
   .addField(':loud_sound: Voice Channel:', song.voicechan, true)
   //.addField('👤 Requested By:', song.authors.tag, true)
   .setFooter(`${song.authors.tag}`)//, song.user.displayAvatarURL)//, song.author.displayAvatarURL)
-  .setTimestamp()
   
 	serverQueue.textChannel.send(playembed);
 }
