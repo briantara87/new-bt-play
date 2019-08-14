@@ -13,14 +13,16 @@ exports.run = async(client, message, args) => {
   const currentDurationSeconds = Math.floor((serverQueue.connection.dispatcher.time%60000)/1000) < 10 ? `0${Math.floor((serverQueue.connection.dispatcher.time%60000)/1000)}` : Math.floor((serverQueue.connection.dispatcher.time%60000)/1000);
 
   if (!serverQueue) return message.channel.send('There is nothing playing.');
-		return 
-  const np = new Discord.RichEmbed()
-  .setDescription(`${serverQueue.songs[0].title}`)
-  .addField(`Author`, `${song.channel}`)
-  .addField('Request by', ``)
+		return message.channel.send(np)
   
-  message.channel.send(np)
-  const song = {
+   
+   let np = new Discord.RichEmbed()
+  .setDescription(`${serverQueue.songs[0].title}`)
+  .addField(`Author`, `aku`)
+  .addField('Request by', `aku`)
+
+  console.log(video);
+	const song = {
 		id: video.id,
 	//	title: Util.escapeMarkdown(video.title),
     uploaded: video.channel.title,
@@ -51,7 +53,4 @@ exports.run = async(client, message, args) => {
 	}
 exports.conf ={
   aliases: ['np']
-}
-exports.help = {
-  name: "nowplaying"
 }
