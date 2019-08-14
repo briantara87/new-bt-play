@@ -17,40 +17,44 @@ if(!serverQueue) return msg.channel.send({ embed: { color: 0x06238B, description
   .setTitle(`${serverQueue.songs[0].title}  [${serverQueue.songs[0].author}]`)
   .setURL(serverQueue.songs[0].url)
   .setThumbnail(`https://i.ytimg.com/vi/${serverQueue.songs[0].id}/default.jpg?width=80&height=60`)
-  .setDescription(`▶ **${progressBar(persentase)} \`[${curentDurationMinute}:${currentDurationSeconds} - ${endDurationMinute}:${endDurationSeconds}]\`**\n`);
+  .setDescription(`**${progressBar(persentase)} \n[${curentDurationMinute}:${currentDurationSeconds} - ${endDurationMinute}:${endDurationSeconds}]**\n`);
   
   return msg.channel.send('**`Now Playing: `**', { embed: emb});
 };
  
 function progressBar(percent){
-	let num = Math.floor(percent*12);
+	let num = Math.floor(percent*15);
 	if(num === 1){
-		return '🔵▬▬▬▬▬▬▬▬▬▬▬';
+		return '🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬';
 	}else if(num === 2){
-		return '▬🔵▬▬▬▬▬▬▬▬▬▬';
+		return '▬🔵▬▬▬▬▬▬▬▬▬▬▬▬▬';
 	}else if(num === 3){
-		return '▬▬🔵▬▬▬▬▬▬▬▬▬';
+		return '▬▬🔵▬▬▬▬▬▬▬▬▬▬▬▬';
 	}else if(num === 4){
-		return '▬▬▬🔵▬▬▬▬▬▬▬▬';
+		return '▬▬▬🔵▬▬▬▬▬▬▬▬▬▬▬';
 	}else if(num === 5){
-		return '▬▬▬▬🔵▬▬▬▬▬▬▬';
+		return '▬▬▬▬🔵▬▬▬▬▬▬▬▬▬▬';
 	}else if(num === 6){
-		return '▬▬▬▬▬🔵▬▬▬▬▬▬';
+		return '▬▬▬▬▬🔵▬▬▬▬▬▬▬▬▬';
 	}else if(num === 7){
-		return '▬▬▬▬▬▬🔵▬▬▬▬▬';
+		return '▬▬▬▬▬▬🔵▬▬▬▬▬▬▬▬';
 	}else if(num === 8){
-		return '▬▬▬▬▬▬▬🔵▬▬▬▬';
+		return '▬▬▬▬▬▬▬🔵▬▬▬▬▬▬▬';
 	}else if(num === 9){
-		return '▬▬▬▬▬▬▬▬🔵▬▬▬';
+		return '▬▬▬▬▬▬▬▬🔵▬▬▬▬▬▬';
 	}else if(num === 10){
-		return '▬▬▬▬▬▬▬▬▬🔵▬▬';
+		return '▬▬▬▬▬▬▬▬▬🔵▬▬▬▬▬';
 	}else if(num === 11){
-		return '▬▬▬▬▬▬▬▬▬▬🔵▬';
+		return '▬▬▬▬▬▬▬▬▬▬🔵▬▬▬▬';
 	}else if(num === 12){
-		return '▬▬▬▬▬▬▬▬▬▬▬🔵';
-	}else{
-		return '🔵▬▬▬▬▬▬▬▬▬▬▬';
-  } 
+		return '▬▬▬▬▬▬▬▬▬▬▬🔵▬▬▬';
+	}else if(num === 13){
+		return '▬▬▬▬▬▬▬▬▬▬▬▬🔵▬▬';
+  }else if(num === 14){
+		return '▬▬▬▬▬▬▬▬▬▬▬▬▬🔵▬';
+	}else if(num === 15){
+		return '▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔵';
+  }
   
   
   
