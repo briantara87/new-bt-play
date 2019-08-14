@@ -20,7 +20,7 @@ if(!serverQueue) return msg.channel.send({ embed: { color: 0x06238B, description
   .setURL(serverQueue.songs[0].url)
   .setThumbnail(`https://i.ytimg.com/vi/${serverQueue.songs[0].id}/default.jpg?width=80&height=60`)
   .setDescription(`**${progressBar(persentase)} \n\`[${curentDurationMinute}:${currentDurationSeconds} - ${endDurationMinute}:${endDurationSeconds}]\`**\n`)
-  .setFooter(`Added by ${song.authors.tag} | Volume `)
+  .setFooter(`Added by ${song.authors.tag}\nVolume ${serverQueue.volume}\n${serverQueue.loop ? 'on' : 'off'}`, {embed: emb})
   return msg.channel.send('**`Now Playing: `**', { embed: emb});
 };
  
