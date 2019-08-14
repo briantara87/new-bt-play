@@ -31,7 +31,7 @@ if (member.user.bot === true) {
                 .addField("Status", `${status[member.user.presence.status]}`, inline, true)
             .addField("Acc Created at", member.user.createdAt.toLocaleString(), true)
                 .addField("Roles", `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).join(" **|** ") || "No Roles"}`, true)
-                .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
+            //    .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
                 .setTimestamp()
     
             message.channel.send(embed);

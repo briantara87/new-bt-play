@@ -290,15 +290,10 @@ console.log(video);
 
     var addedembed = new RichEmbed()
     .setColor(`#ecd4fc`)
-  .setAuthor(`Added to queue:`, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
+  .setAuthor(`Added to queue:`, `https://cdn.discordapp.com/emojis/604953622068985897.png?v=1`)
+    .setDescription(`**[${song.title}](${song.url})**`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
-  .setDescription(`**[${song.title}](${song.url})**`)
-  .addField("<:onk:597701756381691914> Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
-  .addField('<:Youtube:588594913243955200> Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
-  .addField(':loud_sound: Voice Channel:', song.voicechan, true)
-  .addField('👤 Requested By:', song.authors.tag, true)
-  .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
-  .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
+  .setFooter(`Requested By ${song.authors.tag}`)
   .setTimestamp()
     serverQueue.songs.push(song);
     console.log(serverQueue.songs);
@@ -337,9 +332,8 @@ function play(guild, song) {
   .addField("<:onk:597701756381691914> Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
   .addField('<:Youtube:588594913243955200> Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
   .addField(':loud_sound: Voice Channel:', song.voicechan, true)
-  .addField('👤 Requested By:', song.authors.tag, true)
-  .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
-  .setFooter(`${song.authors.tag}`, song.author.displayAvatarURL)
+  //.addField('👤 Requested By:', song.authors.tag, true)
+  .setFooter(`${song.authors.tag}`)//, song.user.displayAvatarURL)//, song.author.displayAvatarURL)
   .setTimestamp()
   
 	serverQueue.textChannel.send(playembed);
