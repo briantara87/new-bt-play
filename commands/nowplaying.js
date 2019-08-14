@@ -13,7 +13,7 @@ if(!serverQueue) return msg.channel.send({ embed: { color: 0x06238B, description
   
   const emb = new Discord.RichEmbed()
   .setColor(0x06238B) 
-  .setAuthor(serverQueue.songs[0].author.tag, serverQueue.songs[0].author.avatarURL)
+ // .setAuthor(serverQueue.songs[0].author.tag, serverQueue.songs[0].author.avatarURL)
   .setTitle(`${serverQueue.songs[0].title}  [${serverQueue.songs[0].author}]`)
   .setURL(serverQueue.songs[0].url)
   .setThumbnail(`https://i.ytimg.com/vi/${serverQueue.songs[0].id}/default.jpg?width=80&height=60`)
