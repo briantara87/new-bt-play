@@ -241,7 +241,9 @@ exports.queue = queue;
 
 async function handleVideo(video, message, voiceChannel, playlist = false) {
 	const serverQueue = queue.get(message.guild.id);
-	console.log(video);
+//	  const curentDurationMinute = Math.floor(serverQueue.connection.dispatcher.time/60000) < 10 ? `0${Math.floor(serverQueue.connection.dispatcher.time/60000)}` : Math.floor(serverQueue.connection.dispatcher.time/60000);
+//  const currentDurationSeconds = Math.floor((serverQueue.connection.dispatcher.time%60000)/1000) < 10 ? `0${Math.floor((serverQueue.connection.dispatcher.time%60000)/1000)}` : Math.floor((serverQueue.connection.dispatcher.time%60000)/1000);
+console.log(video);
 	const song = {
 		id: video.id,
 		title: Util.escapeMarkdown(video.title),
@@ -337,7 +339,7 @@ function play(guild, song) {
   .addField(':loud_sound: Voice Channel:', song.voicechan, true)
   .addField('👤 Requested By:', song.authors.tag, true)
   .addField(':signal_strength: Current Volume:', `${serverQueue.volume}%`, true)
-  .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
+  .setFooter(`${song.authors.tag}`, song.author.displayAvatarURL)
   .setTimestamp()
   
 	serverQueue.textChannel.send(playembed);
