@@ -311,7 +311,8 @@ function play(guild, song) {
    const dispatcher = serverQueue.connection.playStream(ytdl(song.url, { filter: 'audioonly', quality: 'highest' }))
   .on('end', reason => {
     let end = new Discord.RichEmbed()
-    .setDescription('**🎶 | The queue of song is end!**')
+    .setDescription(`**${song.title} is end!**`)
+    .setColor(`ecd4fc`)
     serverQueue.textChannel.send(end)
     if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
     else console.log(reason);

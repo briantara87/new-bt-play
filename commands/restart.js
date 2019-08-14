@@ -6,8 +6,15 @@ module.exports.run = async (client, message, args) => {
     .setTitle("Restart")
     .setDescription("u bukan developer :)")
     .setColor(`#ecd4fc`);
-    if(message.author.id !== '395407295867256833') return message.channel.send(embed);
+    if(message.author.id !== '523112685085130763') return message.channel.send(embed);
     message.channel.send(`>>> Restarted in ${Math.floor(client.ping / 100)}ms`).then(() => {
         process.exit(1);
     })
+}
+
+exports.conf ={
+  aliases: ['r']
+}
+exports.help ={
+  name: 'restart'
 }
