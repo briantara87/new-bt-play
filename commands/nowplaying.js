@@ -10,15 +10,17 @@ if(!serverQueue) return msg.channel.send({ embed: { color: 0x06238B, description
   const currentDurationSeconds = Math.floor((serverQueue.connection.dispatcher.time%60000)/1000) < 10 ? `0${Math.floor((serverQueue.connection.dispatcher.time%60000)/1000)}` : Math.floor((serverQueue.connection.dispatcher.time%60000)/1000);
   const endDurationMinute = serverQueue.songs[0].duration.minutes < 10 ? `0${serverQueue.songs[0].duration.minutes}` : serverQueue.songs[0].duration.minutes;
   const endDurationSeconds = serverQueue.songs[0].duration.seconds < 10 ? `0${serverQueue.songs[0].duration.seconds}` : serverQueue.songs[0].duration.seconds;
-  
+  	const song = {
+    authors: msg.author,
+    };
   const emb = new Discord.RichEmbed()
   .setColor(0x06238B) 
  // .setAuthor(serverQueue.songs[0].author.tag, serverQueue.songs[0].author.avatarURL)
-  .setTitle(`${serverQueue.songs[0].title}  [${serverQueue.songs[0].author}]`)
+  .setTitle(`${serverQueue.songs[0].title}`)
   .setURL(serverQueue.songs[0].url)
   .setThumbnail(`https://i.ytimg.com/vi/${serverQueue.songs[0].id}/default.jpg?width=80&height=60`)
-  .setDescription(`**${progressBar(persentase)} \n[${curentDurationMinute}:${currentDurationSeconds} - ${endDurationMinute}:${endDurationSeconds}]**\n`);
-  
+  .setDescription(`**${progressBar(persentase)} \n\`[${curentDurationMinute}:${currentDurationSeconds} - ${endDurationMinute}:${endDurationSeconds}]\`**\n`)
+  .setFooter(`Added by ${song.authors.tag} | Volume `)
   return msg.channel.send('**`Now Playing: `**', { embed: emb});
 };
  
@@ -54,7 +56,9 @@ function progressBar(percent){
 		return '▬▬▬▬▬▬▬▬▬▬▬▬▬🔵▬';
 	}else if(num === 15){
 		return '▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔵';
-  }
+  	}else{
+		return '🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬';
+    }
   
   
   
