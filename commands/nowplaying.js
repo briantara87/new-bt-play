@@ -1,56 +1,57 @@
 const { handleVideo, youtube, queue } = require("../index.js");
-const Discord = require('discord.js');
-const YouTube = require("simple-youtube-api");
-const ytdl = require("ytdl-core");
-const snekfetch = require('snekfetch');
-
-exports.run = async(client, message, args) => {
- 
-  
- async function handleVideo(video, message, voiceChannel, playlist = false) {
- var serverQueue = queue.get(message.guild.id);
+const Discord = require('discord.js')
+exports.run = async(client, msg, args) => {
+    
+      var serverQueue = queue.get(msg.guild.id);
+if(!serverQueue) return msg.channel.send({ embed: { color: 0x06238B, description:'There is nothing playing'}});
+  const duration = (serverQueue.songs[0].duration.minutes*60000) + ((serverQueue.songs[0].duration.seconds%60000)*1000);
+  const persentase = serverQueue.connection.dispatcher.time/duration;
   const curentDurationMinute = Math.floor(serverQueue.connection.dispatcher.time/60000) < 10 ? `0${Math.floor(serverQueue.connection.dispatcher.time/60000)}` : Math.floor(serverQueue.connection.dispatcher.time/60000);
   const currentDurationSeconds = Math.floor((serverQueue.connection.dispatcher.time%60000)/1000) < 10 ? `0${Math.floor((serverQueue.connection.dispatcher.time%60000)/1000)}` : Math.floor((serverQueue.connection.dispatcher.time%60000)/1000);
-
-  if (!serverQueue) return message.channel.send('There is nothing playing.');
-		return message.channel.send(np)
+  const endDurationMinute = serverQueue.songs[0].duration.minutes < 10 ? `0${serverQueue.songs[0].duration.minutes}` : serverQueue.songs[0].duration.minutes;
+  const endDurationSeconds = serverQueue.songs[0].duration.seconds < 10 ? `0${serverQueue.songs[0].duration.seconds}` : serverQueue.songs[0].duration.seconds;
   
-   
-   let np = new Discord.RichEmbed()
-  .setDescription(`${serverQueue.songs[0].title}`)
-  .addField(`Author`, `aku`)
-  .addField('Request by', `aku`)
-
-  console.log(video);
-	const song = {
-		id: video.id,
-	//	title: Util.escapeMarkdown(video.title),
-    uploaded: video.channel.title,
-    authors: message.author,
-    create: (video.publishedAt).toISOString().replace(/T/, ' ').replace(/\..+/, ''),
-    voicechan: message.member.voiceChannel.name,
-    durationmm: video.durationSeconds ? video.durationSeconds : video.duration / 1000,
-    channel: `https://www.youtube.com/channel/${video.channel.id}`,
-		url: `https://www.youtube.com/watch?v=${video.id}`,
-    durationh: video.duration.hours,
-    durationm: video.duration.minutes,
-    durations: video.duration.seconds,
-    duration: video.duration
-	};
-	if (!serverQueue) {
-		const queueConstruct = {
-      user: message.author,
-			textChannel: message.channel,
-			voiceChannel: voiceChannel,
-			connection: null,
-			songs: [],
-			volume: 100,
-			playing: true,
-      loop: false
-		};
-  }
- }
-	}
-exports.conf ={
-  aliases: ['np']
+  const emb = new Discord.RichEmbed()
+  .setColor(0x06238B) 
+  .setAuthor(serverQueue.songs[0].author.tag, serverQueue.songs[0].author.avatarURL)
+  .setTitle(`${serverQueue.songs[0].title}  [${serverQueue.songs[0].author}]`)
+  .setURL(serverQueue.songs[0].url)
+  .setThumbnail(`https://i.ytimg.com/vi/${serverQueue.songs[0].id}/default.jpg?width=80&height=60`)
+  .setDescription(`▶ **${progressBar(persentase)} \`[${curentDurationMinute}:${currentDurationSeconds} - ${endDurationMinute}:${endDurationSeconds}]\`**\n`);
+  
+  return msg.channel.send('**`Now Playing: `**', { embed: emb});
+};
+ 
+function progressBar(percent){
+	let num = Math.floor(percent*12);
+	if(num === 1){
+		return '🔵▬▬▬▬▬▬▬▬▬▬▬';
+	}else if(num === 2){
+		return '▬🔵▬▬▬▬▬▬▬▬▬▬';
+	}else if(num === 3){
+		return '▬▬🔵▬▬▬▬▬▬▬▬▬';
+	}else if(num === 4){
+		return '▬▬▬🔵▬▬▬▬▬▬▬▬';
+	}else if(num === 5){
+		return '▬▬▬▬🔵▬▬▬▬▬▬▬';
+	}else if(num === 6){
+		return '▬▬▬▬▬🔵▬▬▬▬▬▬';
+	}else if(num === 7){
+		return '▬▬▬▬▬▬🔵▬▬▬▬▬';
+	}else if(num === 8){
+		return '▬▬▬▬▬▬▬🔵▬▬▬▬';
+	}else if(num === 9){
+		return '▬▬▬▬▬▬▬▬🔵▬▬▬';
+	}else if(num === 10){
+		return '▬▬▬▬▬▬▬▬▬🔵▬▬';
+	}else if(num === 11){
+		return '▬▬▬▬▬▬▬▬▬▬🔵▬';
+	}else if(num === 12){
+		return '▬▬▬▬▬▬▬▬▬▬▬🔵';
+	}else{
+		return '🔵▬▬▬▬▬▬▬▬▬▬▬';
+  } 
+  
+  
+  
 }
