@@ -14,13 +14,13 @@ if(!serverQueue) return msg.channel.send({ embed: { color: 0x06238B, description
     authors: msg.author,
     };
   const emb = new Discord.RichEmbed()
-  .setColor(0x06238B) 
+  .setColor('ecd4fc') 
  // .setAuthor(serverQueue.songs[0].author.tag, serverQueue.songs[0].author.avatarURL)
   .setTitle(`${serverQueue.songs[0].title}`)
   .setURL(serverQueue.songs[0].url)
   .setThumbnail(`https://i.ytimg.com/vi/${serverQueue.songs[0].id}/default.jpg?width=80&height=60`)
   .setDescription(`**${progressBar(persentase)} \n\`[${curentDurationMinute}:${currentDurationSeconds} - ${endDurationMinute}:${endDurationSeconds}]\`**\n`)
-  .setFooter(`Added by ${song.authors.tag}\nVolume ${serverQueue.volume}\nLoop ${serverQueue.loop ? 'on' : 'off'}`);
+  .setFooter(`Added by ${song.authors.tag}\nVolume ${serverQueue.volume}%\nLoop ${serverQueue.loop ? 'on' : 'off'}`);
   return msg.channel.send('**`Now Playing: `**', { embed: emb});
 };
  
@@ -59,7 +59,8 @@ function progressBar(percent){
   	}else{
 		return '🔵▬▬▬▬▬▬▬▬▬▬▬▬▬▬';
     }
-  
-  
-  
+}
+
+exports.conf ={
+  aliases: ['np']
 }
