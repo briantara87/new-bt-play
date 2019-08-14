@@ -325,14 +325,10 @@ function play(guild, song) {
   
   var playembed = new RichEmbed()
   .setColor(`#ecd4fc`)
-  .setAuthor(`Start Playing:`, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
+  .setAuthor(`Now playing:`, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
-  .setDescription(`**[${song.title}](${song.url})**`)
-  .addField("<:onk:597701756381691914> Duration:", `${require('./util.js').timeString(song.durationmm)}`, true)
-  .addField('<:Youtube:588594913243955200> Uploaded by:', `[${song.uploaded}](${song.channel})`, true)
-  .addField(':loud_sound: Voice Channel:', song.voicechan, true)
-  //.addField('👤 Requested By:', song.authors.tag, true)
-  .setFooter(`${song.authors.tag}`)//, song.user.displayAvatarURL)//, song.author.displayAvatarURL)
+  .setDescription(`**[${song.title}](${song.url}) ${require('./util.js').timeString(song.durationmm)}**`)
+  .setFooter(`Added by ${song.authors.tag}`)//, song.user.displayAvatarURL)//, song.author.displayAvatarURL)
   
 	serverQueue.textChannel.send(playembed);
 }
