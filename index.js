@@ -290,7 +290,6 @@ console.log(video);
 
     var addedembed = new RichEmbed()
     .setColor(`#ecd4fc`)
-  //.setAuthor(`Added to queue:`, `https://cdn.discordapp.com/emojis/604953622068985897.png?v=1`)
     .setDescription(`**[${song.title}](${song.url})**`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
   .setFooter(`Requested By ${song.authors.tag}`)
@@ -325,7 +324,7 @@ function play(guild, song) {
   
   var playembed = new RichEmbed()
   .setColor(`#ecd4fc`)
-  .setAuthor(`Now playing:`, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
+  .setAuthor(`Now playing:`)//, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
   .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
   .setDescription(`**[${song.title}](${song.url}) ${require('./util.js').timeString(song.durationmm)}**`)
   .setFooter(`Added by ${song.authors.tag}`)//, song.user.displayAvatarURL)//, song.author.displayAvatarURL)
