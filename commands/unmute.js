@@ -10,12 +10,11 @@ module.exports.run = async (bot, message, args) => {
   if (!toMute)
     return message.channel.sendMessage("Please mention an user or ID to mute!");
 
-  let role = message.guild.roles.find(r => r.name === "prey");
+  let role = message.guild.roles.find('name',"prey");
 
-  if (!role || !toMute.roles.has("prey"))
-    return message.channel.sendMessage("This user is not muted!");
-
-  await toMute.removeRole(737127264621297724);
+  if (!role || !toMute.roles.ha"prey"))
+  return message.channel.sendMessage("This user is not muted!");
+  await toMute.removeRole("prey");
   message.channel.sendMessage("The user has been unmuted!");
 
   message.delete();
