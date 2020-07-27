@@ -7,7 +7,7 @@ module.exports = { // This basically works like every normal package you use.
   hook: function(channel, title, msg, color, avatar) { // This function uses quite a few options. The last 2 are optional.
   },
   
-  splitEmbed: function (channel, description, deleteTimer) {
+  splitEmbed: function (channel, descriescription, deleteTimer) {
     
     // Check base fields
     let fields = Math.floor(description.length / 2048);
