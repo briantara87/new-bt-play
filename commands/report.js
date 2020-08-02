@@ -42,4 +42,4 @@ removeCooldown(message.author.id, 10000);
         if (!modlog) return;
   message.channel.send("User has been reported, will be checked soon.")
   client.channels.get(modlog.id).send({embed});
-}
+} 
