@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
       `https://cdn.discordapp.com/avatars/478547279104442368/8d7f341ebda4498869591fbd95e3d807.png?size=256`
     )
     .setThumbnail(target.displayAvatarURL)
-    .setColor(FA9FF)
+    .setColor(#6FA9FF)
     .addField("Username", `${member.user.username}`, inline)
     .addField("Discriminator", `${member.user.discriminator}`, inline)
     .addField("ID", member.user.id, inline)
