@@ -31,6 +31,11 @@ exports.run = async (client, message, args) => {
       "[Discord](https://discord.gg/quhBQyf)\n_ _",
       `false`
     )
+    .addfield(
+      "my YouTube channel",
+      "[YouTube](https://www.youtube.com/channel/UCwNb6v-oD_EU4xFpeiVQ8Cg)\n_ _",
+      "false"
+    )
     .addField(
       "Documentation can be found at",
       "[Github](https://github.com/Zay-Development/Zetsuya-Bot/tree/master)\n_ _",
@@ -42,7 +47,7 @@ exports.run = async (client, message, args) => {
       `false`
     ) //Kenapa? ~andra//pen biar prefix per server nya muncul///oh wait
     .setFooter(
-      "©Release 2019 | BLETIK Bot | This bot is still under Development"
+      "©Release 2018 | BLETIK Bot | This bot is still under Development"
     )
     .setTimestamp();
   message.channel.send(embed);
