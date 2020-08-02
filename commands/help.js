@@ -17,7 +17,7 @@ exports.run = async(client, message, args) => { // Modification
   //dah//thx
     let embed1 = new RichEmbed()
         let embed = new RichEmbed()
-        .setAuthor(`Zetsuya | ぜつや`, `://images-ext-1.discordapp.net/external/a`)
+        .setAuthor(`BLETIK | BT`, ('')
         .setColor(`#ecd4fc`)
         .setThumbnail(client.user.avatarURL)
         .addField("If you have a question / bug report please report them on", "[Discord](https://discord.gg/Xdcbk2X)\n_ _",`false`)
