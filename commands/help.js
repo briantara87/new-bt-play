@@ -17,7 +17,7 @@ exports.run = async(client, message, args) => { // Modification
   //dah//thx
     let embed1 = new RichEmbed()
         let embed = new RichEmbed()
-        .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
+        .setAuthor(`Zetsuya | ぜつや`, `://images-ext-1.discordapp.net/external/a`)
         .setColor(`#ecd4fc`)
         .setThumbnail(client.user.avatarURL)
         .addField("If you have a question / bug report please report them on", "[Discord](https://discord.gg/Xdcbk2X)\n_ _",`false`)
