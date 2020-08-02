@@ -32,8 +32,8 @@ exports.run = async (client, message, args) => {
       `false`
     )
     .addField(
-      "Documentation can be found at",
-      "[Github](https://github.com/Zay-Development/Zetsuya-Bot/tree/master)\n_ _",
+      "my youtube channel",
+      "[YouTube](https://www.youtube.com/channel/UCwNb6v-oD_EU4xFpeiVQ8Cg)\n_ _",
       "false"
     )
     .addField(
