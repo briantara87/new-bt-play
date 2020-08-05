@@ -8,8 +8,8 @@ module.exports.run = async (bot, message, args) => {
             if (!error && response.statusCode == 200) {
                     let emb = new Discord.RichEmbed()
                     .setImage(body)
-                    .setColor("0xECD4FC")
-                    .setTitle("Here is your random cat")
+                    .setColor("random")
+                    .setTitle("Here is your random dragon")
                               
                    message.channel.send(emb) 
               message.delete();
@@ -18,5 +18,5 @@ module.exports.run = async (bot, message, args) => {
     }
 
 module.exports.help = {
-  name:"cat"
+  name:"dragon"
 }
