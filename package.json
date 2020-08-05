@@ -1,5 +1,5 @@
 {
-  "name": "Zetsuya",
+  "name": "bletik",
   "version": "0.0.1a",
   "description": "Moderation bot",
   "main": "mainbot.js",
@@ -53,6 +53,6 @@
     "node",
     "glitch",
     "express",
-    "zetsuya"
+    "bletik"
   ]
 }
