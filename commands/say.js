@@ -6,7 +6,7 @@ const member = message.member;
   
 let emb = new Discord.RichEmbed()
 
-  .addField, cmd[0], true)
+  .addField(, cmd[0], true)
 
   .setColor(`RANDOM`)
 
