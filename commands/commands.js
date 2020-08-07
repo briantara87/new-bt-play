@@ -7,7 +7,11 @@ module.exports.run = async (bot, message, args) => {
   let donateEmb = new Discord.RichEmbed()
 
     .setColor("random")
-
+  
+.addField(
+  "use" ("./prefixes.json", "``[command] to use``"),
+  "for example" ("./prefixes.json", "``help``"
+  )
     .setTitle("server and core")
 
     .setDescription("help,invite,ping")
@@ -22,9 +26,8 @@ module.exports.run = async (bot, message, args) => {
 
     .setFooter("not yeet all commands!")
 
-    .setThumbnail(bicon);
-
-  message.channel.send(donateEmb);
+    .setThumbnail(bicon)
+  message.channel.send(Emb);
 
   message.delete();
 
