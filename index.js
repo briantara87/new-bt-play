@@ -35,6 +35,7 @@ const youtube = new YouTube(process.env.YOUTUBE);
 
 for(const cmd of client.commands){
 const file = require(`./commands/${cmd}`);
+  
 if(!file.conf || !file.conf.aliases) continue;
 if(file.conf.aliases instanceof Array){
 for(const al of file.conf.aliases){
