@@ -100,7 +100,7 @@ function random_playing(bot) {
 client.on("ready", () => {
   var clientlog = `
 
-[BOT LOGS] BT Community [BOT LOGS]
+[BOT LOGS] Zetsuya Community [BOT LOGS]
 
 =============================================
 
@@ -281,7 +281,7 @@ client.on("message", async msg => {
 
     .addField(`Developer`, `Zay#5616`, true)
 
-    .setFooter("bletik Bot | Prefix: 87 | This bot is still under Development")
+    .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
 
     .setColor(`RANDOM`)
 
@@ -312,6 +312,45 @@ client.on("message", async msg => {
   //let nxtlvl = xp[msg.author.id].level * 500000;
 
   //xp[msg.author.id].xp = curxp + xpadd;
+
+  //if(nxtlvl <= xp[msg.author.id].xp){
+
+  //xp[msg.author.id].level = curlvl + 1;
+
+  //msg.channel.send(`Leveled Up: \nNew Level: **${curlvl + 1}**`).then(msg => msg.delete(1000))
+
+  //console.log(`Level is ${xp[msg.author.id].level}`);
+
+  //}
+
+  //fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+
+  //  if(err) console.log(err);
+
+  //})
+
+  //End of code Mention Bot
+
+  let prefix = crafty[msg.guild.id].prefix;
+
+  if (!msg.content.startsWith(prefix)) return;
+
+  const messageArray = msg.content.split(" ");
+
+  const args = msg.content
+    .slice(prefix.length)
+    .trim()
+    .split(" ");
+
+  const searchString = messageArray.slice(1).join(" ");
+
+  const url = args[1] ? args[1].replace(/<(.+)>/g, "$1") : "";
+
+  console.log(searchString);
+
+  const serverQueue = queue.get(msg.guild.id);
+
+  let sender = msg.author;
 
   let cmd = args.shift().toLowerCase();
 
