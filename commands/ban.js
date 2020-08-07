@@ -45,5 +45,5 @@ let xdemb = new Discord.RichEmbed()
 
       }
       module.exports.help = {
-        name: "ban"{
+        name: "ban"
       }
