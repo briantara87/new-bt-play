@@ -281,7 +281,7 @@ client.on("message", async msg => {
 
     .addField(`Developer`, `Zay#5616`, true)
 
-    .setFooter("©Zetsuya Bot | Prefix: z! | This bot is still under Development")
+    .setFooter("bletik Bot | Prefix: 87 | This bot is still under Development")
 
     .setColor(`RANDOM`)
 
