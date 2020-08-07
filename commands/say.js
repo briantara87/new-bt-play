@@ -1,20 +1,15 @@
-const Discord = require("discord.js");
-
 module.exports.run = async (bot, message, args) => {
-  const member = message.member;
-  const cmd = args.join(" ").split(" | ");
-  let emb = new Discord.RichEmbed()
-    .addField(`${member.user.tag} Says`, cmd[0], true)
-    .setColor(`RANDOM`)
-    .setTimestamp()
-    .setColor(`RANDOM`)
+  if (message.author.id === "448410421339095041") return;
 
-    .setTimestamp();
+  if (message.author.id === "485494651835383828") return;
 
-  message.channel.send(emb);
+  const sayMessage = args.join(" ");
 
-  message.delete();
+  message.delete().catch(O_o => {});
+
+  message.channel.send(sayMessage);
 };
+
 module.exports.help = {
-  name: "embed"
+  name: "say"
 };
