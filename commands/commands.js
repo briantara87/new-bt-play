@@ -1,41 +1,91 @@
-const Discord = require("discord.js");
+const Discord = require ("discord.js");
+
+const fs = require("fs");
 
 module.exports.run = async (bot, message, args) => {
 
-  let bicon = bot.user.displayAvatarURL;
+    const infoList = fs.readFileSync("./info.txt", "utf8");
 
-  let donateEmb = new Discord.RichEmbed()
+    const adminCommands = fs.readFileSync("./admin.txt", "utf8");
 
-    .setColor("random")
-  
-.addField(
-  "use" ("./prefixes.json", "``[command] to use``"),
-  "for example" ("./prefixes.json", "``help``"
-  )
-    .setTitle("server and core")
+    const funcommands = fs.readFileSync("./fun.txt", "utf8");
 
-    .setDescription("help,invite,ping")
+    let bicon = bot.user.displayAvatarURL;
 
-    .addField(
+    const pidor = message.guild.members.get(args[0]) || message.member;
 
-      "trakteer Donate",
+    let funEmbed = new Discord.RichEmbed()
 
-      "[trakteer](https://trakteer.id/bletik-bt-u8iyu)"
+    .setColor("00ff00")
 
-    )
+    .setTitle("**__Fun commands__**")
 
-    .setFooter("not yeet all commands!")
+    .setDescription(funcommands)
 
-    .setThumbnail(bicon)
-  message.channel.send(Emb);
+    
 
-  message.delete();
+    pidor.send(funEmbed);
 
-};
+    let infoEmbed = new Discord.RichEmbed()
 
-module.exports.help = {
+    .setColor("00ff00")
 
-  name: "commands"
+    .setTitle("**__Info commands__**")
 
-};
+    .setDescription(infoList)
 
+    pidor.send(infoEmbed);
+
+    let modembed = new Discord.RichEmbed()
+
+    .setColor("00ff00")
+
+    .setTitle("**__Admin commands__**")
+
+    .setDescription(adminCommands)
+
+    
+
+    pidor.send(modembed);
+
+    let supEmbed = new Discord.RichEmbed()
+
+    .setColor("#00ff00")
+
+    .setTitle("Support")
+
+    .setImage("https://cdn.discordapp.com/avatars/291221132256870400/4f71fea454b62405b55f2fe0d8e7db0c.png?size=2048")
+
+    .setDescription("If you need help with something feel free to join the [Support Server](https://discord.gg/zvvasbc)")
+
+    .setFooter("<> means required, [] means optional")
+
+    .setTimestamp()
+
+    .addField("Contact", "To contact with the owner use `!contact`")
+
+    pidor.send(supEmbed)
+
+    let chanEmbed = new Discord.RichEmbed()
+
+    .setTitle("not yeet all command")
+
+    .setColor("#0ff00")
+
+    .setFooter(`Help command used by: ${pidor.user.username}`)
+
+    .setDescription(`${pidor} Check your DMs`);
+
+    message.channel.send(chanEmbed).then(msg => {msg.delete(5000)});
+
+    message.delete();
+
+    
+
+ }
+
+ module.exports.commands = {
+
+     name: "commands" 
+
+ }
