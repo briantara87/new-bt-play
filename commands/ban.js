@@ -26,6 +26,8 @@ let xdemb = new Discord.RichEmbed()
         } else {
             res = reason
         }
+  
+  
 
         await member.ban(reason).catch(error => message.channel.send(`Sorry, I coldn't ban because of: ${error}`));
 
@@ -43,5 +45,6 @@ let xdemb = new Discord.RichEmbed()
 
       }
       module.exports.help = {
-        name: "ban"
+        name: "ban
+        "
       }

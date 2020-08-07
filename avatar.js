@@ -36,7 +36,7 @@ module.exports = {
 
       .setFooter(
         `bletik`,
-        ""
+        "https://cdn.discordapp.com/avatars/478547279104442368/8d7f341ebda4498869591fbd95e3d807.png?size=256"
       )
 
       .setTimestamp();
