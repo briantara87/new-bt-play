@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
     )
     .addField(
       `Are you don't know how to use this bot? do :`,
-      `${crafty[message.guild.id].prefix}cmds`,
+      `${crafty[message.guild.id].prefix}commands`,
       `false`
     ) //Kenapa? ~andra//pen biar prefix per server nya muncul///oh wait
     .setFooter(
