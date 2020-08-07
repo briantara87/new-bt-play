@@ -56,7 +56,7 @@ exports.run = (bot, message, args) => {
     .addField(`Developer`, `[Zay#5616](https://github.com/Zay-Development)`, true)
         .addField(`Created at`, `${bot.user.createdAt.toLocaleString()}`, `true`)
         .addField(`Thanks for using our bot, we love you all_                          _`, `From creator of Zetsuya bot :heart:`, `true`)
-    .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
+    .setFooter("©Release 2020 | bletik Bot | This bot is still under Development")
     .setTimestamp()
     .setColor(0xECD4FC)
         message.channel.send(embed);

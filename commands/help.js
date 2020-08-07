@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
       `false`
     ) //Kenapa? ~andra//pen biar prefix per server nya muncul///oh wait
     .setFooter(
-      "©Release 2019 | BLETIK Bot | This bot is still under Development"
+      "©Release 2020 | BLETIK Bot | This bot is still under Development"
     )
     .setTimestamp();
   message.channel.send(embed);
