@@ -8,11 +8,13 @@ module.exports.run = async (bot, message, args) => {
 
     .addfield(
       "help,8ball,avatar,ban,cat,dog,calc,clear,cmds,donate,info,invite,kick,mute,ping,prefix,profile,report,say,unmute,warn"
-    );
+    )
+    .setTimestamp();
   message.channel.send(embed);
   message.delete();
 };
-
-module.exports.help = {
-  name: "command"
-};
+exports.conf = {
+  
+module.exports.
+ommand"
+}
