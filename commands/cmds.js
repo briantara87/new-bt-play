@@ -20,7 +20,7 @@ exports.run = (bot, message, args, client) => {
      //   .addField("Fun commands :", "`8ball  `", false)
        // .addField("Moderation commands :", "`clear  prefix  mute  unmute  kick  warn`", false)
         //.addField("Other commands will be added soon :ok_hand:","_ _","true")         //ngapain? ~andra
-     //   .setFooter("©Release 2019 | Zetsuya Bot | This bot is still under Development")
+     //   .setFooter("©Release 2019 | bletik Bot | This bot is still under Development")
         .setTimestamp()
         message.channel.send(embed);
   message.delete();
