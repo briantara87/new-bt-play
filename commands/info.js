@@ -40,9 +40,9 @@ exports.run = (bot, message, args) => {
     let uptime = u.y + "-" + u.mt + "-" + u.w + "-" + u.d + " " + u.h + ":" + u.m + ":" + u.s + ""
     const duration = moment.duration(bot.uptime)
         let embed = new RichEmbed()
-    .setAuthor(`Zetsuya | ぜつや`, `https://images-ext-1.discordapp.net/external/ajWUSzEm6V_PVGGct42J3h8swrQEirySEBKq9J4-5WU/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/604652011857641484/b92a72f9537a38687d19939b056090e5.png`)
+    .setAuthor(`bletik | bt`, `https://cdn.discordapp.com/avatars/478547279104442368/8d7f341ebda4498869591fbd95e3d807.png?size=256`)
         
-        .addField(`Name`, `Zetsuya`, true)
+        .addField(`Name`, `bletik`, true)
         .addField(`Discriminator`, `#1862`, true)
         .addField(`Prefix`, `${crafty[message.guild.id].prefix}`, true)
         .addField(`Version`, `[0.0.4a](https://github.com/Zay-Development/Zetsuya-Bot/tree/master)`, true)
