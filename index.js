@@ -569,10 +569,6 @@ function play(guild, song) {
 }
 
 //==================
-client.user.setActivity("with depression", {
-  type: "SUBSRIBE",
-  url: "https://www.youtube.com/channel/UCwNb6v-oD_EU4xFpeiVQ8Cg"
-});
 // ============================================================================================================================================
 
 client.login(process.env.TOKEN);
