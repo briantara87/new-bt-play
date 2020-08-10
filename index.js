@@ -571,36 +571,6 @@ function play(guild, song) {
 }
 
 //==================
-const discord = require("discord.js");
-
-const token = require("./token.json").token;
-
-const bot = new discord.Client({
-
-  disableEveryone: true
-
-});
-// When bot ready
-
-bot.on("ready", async () => {
-
-  console.log(`${bot.user.username} is ready for action!`);
-
-  if (config.activity.streaming == true) {
-
-    bot.user.setActivity(config.activity.game, {
-
-      url: 'https://twitch.tv/username'
-
-    });
-
-  } else {
-
-    bot.user.setActivity(config.activity.game, {
-
-      type: 'WATCHING'
-
-    }); //PLAYING, LISTENING, WATCHING
 
 // ============================================================================================================================================
 
