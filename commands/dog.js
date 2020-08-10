@@ -14,6 +14,8 @@ module.exports.run = async (bot, message, args) => {
     .setImage(body.url);
 
   message.channel.send(embed);
+
+              message.delete();
 };
 
 module.exports.help = {
