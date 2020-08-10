@@ -92,17 +92,16 @@ function random_playing(bot) {
     `${client.channels.size} Channels`,
     `${client.guilds.size} Server`
   ]; // You cant set anything playing you want it!
-  }
+
   let random = status[Math.floor(Math.random() * status.length)];
 
   client.user.setActivity(random, { type: "WATCHING" });
-
-  //ngk ada error kan?tapi kok ngk muncul//btr//thx
+} //ngk ada error kan?tapi kok ngk muncul//btr//thx
 
 client.on("ready", () => {
   var clientlog = `
 
-[BOT LOGS] bletik Community [BOT LOGS]
+[BOT LOGS] Zetsuya Community [BOT LOGS]
 
 =============================================
 
