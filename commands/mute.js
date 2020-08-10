@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     message.mentions.users.first() || message.guild.members.get(args[0])
   );
 
-  if (message.author.id !== "478547279104442368")
+  if (message.author.id !== "478547279104442368") 
     if (!tomute) return message.channel.send("Please tag user to mute!");
 
   if (!message.member.hasPermission("MANAGE_MESSAGES"))
