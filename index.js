@@ -49,6 +49,7 @@ const client = new Client({
   fetchAllMember: false
 });
 
+
 const func = require("./functions.js");
 
 const queue = new Collection();
@@ -94,15 +95,13 @@ function random_playing(bot) {
 
   let random = status[Math.floor(Math.random() * status.length)];
 
-  client.user.setActivity("with depression", {
-      type: "SUBSRIBE",
+  client.user.setActivity(random, { type: "WATCHING" });
+} //ngk ada error kan?tapi kok ngk muncul//btr//thx
 
-        url: "https://www.youtube.com/channel/UCwNb6v-oD_EU4xFpeiVQ8Cg"
-  
-    //ngk ada error kan?tapi kok ngk muncul//btr//thx
- `
-ini
-[BOT LOGS] bletik Community [BOT LOGS]
+client.on("ready", () => {
+  var clientlog = `
+
+[BOT LOGS] Zetsuya Community [BOT LOGS]
 
 =============================================
 
@@ -115,6 +114,7 @@ With ${client.channels.size} channels
 =============================================
 
 `;
+
   console.log(clientlog);
 
   setInterval(random_playing, 5000);
@@ -382,8 +382,9 @@ client.on("message", async msg => {
   }
 
   //End of code CMD Handler
-
+  
   //when bot ready
+  
 
   // Music Command
 
