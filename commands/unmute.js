@@ -1,5 +1,5 @@
 module.exports.run = async (bot, message, args) => {
-  if (message.author.id !== "478547279104442368")
+    
     if (!message.member.hasPermission("MANAGE_MESSAGES"))
       return message.channel.sendMessage(
         "You don't have the `Manage Messages` premission"
