@@ -100,7 +100,7 @@ function random_playing(bot) {
 
 client.on("ready", () => {
   var clientlog = `
-
+ini
 [BOT LOGS] Zetsuya Community [BOT LOGS]
 
 =============================================
@@ -114,7 +114,6 @@ With ${client.channels.size} channels
 =============================================
 
 `;
-
   console.log(clientlog);
 
   setInterval(random_playing, 5000);
