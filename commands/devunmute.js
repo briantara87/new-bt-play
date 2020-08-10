@@ -1,4 +1,8 @@
-module.exports.run = async (bot, message, args) => {
+const Discord = require("discord.js");
+
+const bot = new Discord.Client();
+
+exports.run = async (client, message, args) => {
   if (!message.member.author.id("478547279104442368"))
     return message.channel.sendMessage(
       "You don't have the `bletik` premission"
