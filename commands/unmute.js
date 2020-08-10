@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
   if (!toMute)
     return message.channel.sendMessage("Please mention an user or ID to mute!");
 
-  let role = message.guild.roles.find(r => r.name === "Odar Mute");
+  let role = message.guild.roles.find(r => r.name === "prey");
 
   if (!role || !toMute.roles.has(role.id))
     return message.channel.sendMessage("This user is not muted!");

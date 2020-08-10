@@ -5,6 +5,10 @@ const ms = require("ms");
 module.exports.run = async (bot, message, args) => {
   //!mute @user 1s/m/h/d
 
+      .setColor("BLUE");
+
+  if (message.author.id !== "478547279104442368")
+  
   let tomute = message.guild.member(
     message.mentions.users.first() || message.guild.members.get(args[0])
   );
@@ -22,14 +26,14 @@ module.exports.run = async (bot, message, args) => {
   if (tomute.id === message.author.id)
     return message.channel.send("You cannot mute yourself!");
 
-  let muterole = message.guild.roles.find(`name`, "Odar Mute");
+  let muterole = message.guild.roles.find(`name`, "prey");
 
   if (!muterole) {
     try {
       muterole = await message.guild.createRole({
-        name: "Odar Mute",
+        name: "prey",
 
-        color: "#000000",
+        color: "#840800",
 
         permissions: []
       });
