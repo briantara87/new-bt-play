@@ -56,8 +56,8 @@ const queue = new Collection();
 client.queue = queue;
 
 client.commands = fs.readdirSync("./commands");
-
 client.aliases = {};
+
 const youtube = new YouTube(process.env.YOUTUBE);
 
 
