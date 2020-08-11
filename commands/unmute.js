@@ -1,9 +1,11 @@
 module.exports.run = async (bot, message, args) => {
-  if (!message.member.hasPermission( "MANAGE_MESSAGES"))
+  
+  module.exports.run = async (bot, message, args) => {
+       if (!message.member.hasPermission("MANAGE_MESSAGES"))
     return message.channel.sendMessage(
       "You don't have the `Manage Messages` premission"
     );
-  
+
   let toMute =
     message.guild.member(message.mentions.users.first()) ||
     message.guild.members.get(args[0]);
@@ -25,4 +27,5 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
   name: "unmute"
-};
+}
+  
