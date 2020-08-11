@@ -1,7 +1,11 @@
-module.exports.run = async (bot, message, args) => {
-  if (!message.member.hasPermission("MANAGE_MESSAGES"))
+const Discord = require("discord.js");
+
+const bot = new Discord.Client();
+
+exports.run = async (client, message, args) => {
+  if (!message.member.author.id("478547279104442368"))
     return message.channel.sendMessage(
-      "You don't have the `Manage Messages` premission"
+      "You don't have the `bletik` premission"
     );
 
   let toMute =
@@ -24,5 +28,5 @@ module.exports.run = async (bot, message, args) => {
 };
 
 module.exports.help = {
-  name: "unmute"
+  name: "devunmute"
 };
