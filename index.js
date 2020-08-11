@@ -58,8 +58,8 @@ client.queue = queue;
 client.commands = fs.readdirSync("./commands");
 
 client.aliases = {};
-
 const youtube = new YouTube(process.env.YOUTUBE);
+
 
 for (const cmd of client.commands) {
   const file = require(`./commands/${cmd}`);
@@ -100,7 +100,7 @@ function random_playing(bot) {
 client.on("ready", () => {
   var clientlog = `
 
-[BOT LOGS] Zetsuya Community [BOT LOGS]
+[BOT LOGS] bletik Community [BOT LOGS]
 
 =============================================
 
