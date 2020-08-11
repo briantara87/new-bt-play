@@ -2,21 +2,28 @@
 
 const Discord = require("discord.js");
 
-const { Client, Util, RichEmbed, MessageEmbed, Collection, Uptime } = require('discord.js');
+const {
+  Client,
+  Util,
+  RichEmbed,
+  MessageEmbed,
+  Collection,
+  Uptime
+} = require("discord.js");
 
-const http = require('http');
+const http = require("http");
 
-const express = require('express');
+const express = require("express");
 
 const app = express();
 
-const fs = require('fs');
+const fs = require("fs");
 
-const db = require('quick.db');
+const db = require("quick.db");
 
-const { Canvas } = require("canvas-constructor")
+const { Canvas } = require("canvas-constructor");
 
-const { loadImage } = require("canvas")
+const { loadImage } = require("canvas");
 
 const config = require("./config.json");
 
@@ -28,23 +35,19 @@ const YouTube = require("simple-youtube-api");
 
 const ytdl = require("ytdl-core");
 
-const snekfetch = require('snekfetch');
+const snekfetch = require("snekfetch");
 
 const cooldown = new Collection();
 
-//const money = require('discord-money'); 
+//const money = require('discord-money');
 
 const client = new Client({
-
-    disableEvents: [
-
-],
+  disableEvents: [],
 
   disableEveryone: true,
 
   fetchAllMember: false
-
-})
+});
 
 const func = require("./functions.js");
 
@@ -52,63 +55,52 @@ const queue = new Collection();
 
 client.queue = queue;
 
-client.commands = fs.readdirSync('./commands');
+client.commands = fs.readdirSync("./commands");
 
 client.aliases = {};
 
 const youtube = new YouTube(process.env.YOUTUBE);
 
-for(const cmd of client.commands){
+for (const cmd of client.commands) {
+  const file = require(`./commands/${cmd}`);
 
-const file = require(`./commands/${cmd}`);
+  if (!file.conf || !file.conf.aliases) continue;
 
-if(!file.conf || !file.conf.aliases) continue;
-
-if(file.conf.aliases instanceof Array){
-
-for(const al of file.conf.aliases){
-
-client.aliases[al] = cmd;
-
+  if (file.conf.aliases instanceof Array) {
+    for (const al of file.conf.aliases) {
+      client.aliases[al] = cmd;
     }
-
-  }else{
-
-client.aliases[file.conf.aliases] = cmd;
-
+  } else {
+    client.aliases[file.conf.aliases] = cmd;
+  }
 }
 
-}
+for (const cmd of client.commands) {
+  const file = require(`./commands/${cmd}`);
 
-for(const cmd of client.commands){
-
-const file = require(`./commands/${cmd}`);
-
-if(!file.conf || !file.conf.aliases) continue;
-
-  
-
+  if (!file.conf || !file.conf.aliases) continue;
 }
 
 require("./server.js");
 
 //coba restart.//ga jadi. gw aja.//dah tuh.
 
-function random_playing(bot)  {
+function random_playing(bot) {
+  let status = [
+    `${client.users.size} Users`,
+    `${client.channels.size} Channels`,
+    `${client.guilds.size} Server`
+  ]; // You cant set anything playing you want it!
 
-  let status = [`${client.users.size} Users`, `${client.channels.size} Channels`, `${client.guilds.size} Server`] // You cant set anything playing you want it!
+  let random = status[Math.floor(Math.random() * status.length)];
 
-  let random = status[Math.floor(Math.random() * status.length)]
+  client.user.setActivity(random, { type: "WATCHING" });
+} //ngk ada error kan?tapi kok ngk muncul//btr//thx
 
-  client.user.setActivity(random, {type: "WATCHING"}); 
-
-}//ngk ada error kan?tapi kok ngk muncul//btr//thx
-
-client.on('ready', () => {
-
+client.on("ready", () => {
   var clientlog = `
 
-[BOT LOGS] bletik Community [BOT LOGS]
+[BOT LOGS] Zetsuya Community [BOT LOGS]
 
 =============================================
 
@@ -120,181 +112,162 @@ With ${client.channels.size} channels
 
 =============================================
 
-`
-
-  
+`;
 
   console.log(clientlog);
 
   setInterval(random_playing, 5000);
-
 });
 
-client.on('guildMemberAdd', async member => {
+client.on("guildMemberAdd", async member => {
+  let role = await client.role.fetch(`Role.${member.guild.id}.role`);
 
-  
+  let mark = await client.role.fetch(`Role.${member.guild.id}.on`);
 
-  let role = await client.role.fetch(`Role.${member.guild.id}.role`)
+  let roletarget = member.guild.roles.get(role);
 
-  let mark = await client.role.fetch(`Role.${member.guild.id}.on`)
-
-  
-
-  let roletarget = member.guild.roles.get(role)
-
-    member.addRole(roletarget).catch(console.error);
-
-  
+  member.addRole(roletarget).catch(console.error);
 
   console.log("Do You Stop ME!!");
 
-  let memberavatar = await loadImage(member.user.displayAvatarURL)
+  let memberavatar = await loadImage(member.user.displayAvatarURL);
 
-  
+  let channeltarget = client.welcome.fetch(
+    `welcome.${member.guild.id}.channel`
+  );
 
- let channeltarget = client.welcome.fetch(`welcome.${member.guild.id}.channel`)
-
-  let channelmark = client.welcome.get(`welcome.${member.guild.id}.on`)
-
-  
+  let channelmark = client.welcome.get(`welcome.${member.guild.id}.on`);
 
   if (!channeltarget) return;
 
   if (!channelmark) return;
 
-  
+  if (channelmark == true) {
+    let welcomeChannel = member.guild.channels.get(channeltarget);
 
-if (channelmark == true) {
+    let welcomeCB = new Canvas(800, 360)
 
-  let welcomeChannel = member.guild.channels.get(channeltarget)
+      .setColor("RED")
 
-  
+      .addRect(0, 0, 800, 360)
 
-  let welcomeCB = new Canvas(800, 360)
+      .setShadowColor("#212121")
 
-  .setColor("RED")
+      .setShadowBlur(200)
 
-  .addRect(0,0,800,360)
+      .setColor("WHITE")
 
-  .setShadowColor("#212121")
+      .addRect(10, 10, 780, 340)
 
-  .setShadowBlur(200)
+      .setColor("GRAY")
 
-  .setColor("WHITE")
+      .addCircle(400, 130, 110)
 
-  .addRect(10,10,780,340)
+      .addCircularImage(memberavatar, 400, 120, 100)
 
-  .setColor("GRAY")
+      .setTextAlign("center")
 
-  .addCircle(400, 130, 110)
+      .setTextFont("26px Impact")
 
-  .addCircularImage(memberavatar, 400, 120, 100)
+      .addText(
+        `Welcome To ${member.guild.name}, ${member.user.username}!`,
+        400,
+        265
+      )
 
-  .setTextAlign("center")
+      .addText(`You're the ${member.guild.memberCount} Members`, 400, 300);
 
-  .setTextFont('26px Impact')
+    const attachment = new Discord.Attachment(
+      welcomeCB.toBuffer(),
+      "image.jpeg"
+    );
 
-  .addText(`Welcome To ${member.guild.name}, ${member.user.username}!`, 400, 265)
+    welcomeChannel.send(`Welcome ${member}`, attachment);
+  }
+});
 
-  .addText(`You're the ${member.guild.memberCount} Members`, 400, 300)
-
-  const attachment = new Discord.Attachment(welcomeCB.toBuffer(), 'image.jpeg');
-
-  welcomeChannel.send(`Welcome ${member}`, attachment)
-
-}
-
-})
-
-client.on('guildMemberRemove', async member => {
-
+client.on("guildMemberRemove", async member => {
   console.log("Do You Stop ME!");
 
-  
+  let memberavatar = await loadImage(member.user.displayAvatarURL);
 
-  let memberavatar = await loadImage(member.user.displayAvatarURL)
+  let channeltarget = client.welcome.fetch(
+    `welcome.${member.guild.id}.channel`
+  );
 
-  
-
-  let channeltarget = client.welcome.fetch(`welcome.${member.guild.id}.channel`)
-
-  let channelmark = client.welcome.fetch(`welcome.${member.guild.id}.on`)
-
-  
+  let channelmark = client.welcome.fetch(`welcome.${member.guild.id}.on`);
 
   if (!channeltarget) return;
 
   if (!channelmark) return;
 
-  
+  if (channelmark == true) {
+    let welcomeChannel = member.guild.channels.get(channeltarget);
 
-if (channelmark == true) {
+    let welcomeCB = new Canvas(800, 360)
 
-  let welcomeChannel = member.guild.channels.get(channeltarget)
+      .setColor("RED")
 
-  
+      .addRect(0, 0, 800, 360)
 
-  let welcomeCB = new Canvas(800, 360)
+      .setShadowColor("#212121")
 
-  .setColor("RED")
+      .setShadowBlur(200)
 
-  .addRect(0,0,800,360)
+      .setColor("WHITE")
 
-  .setShadowColor("#212121")
+      .addRect(10, 10, 780, 340)
 
-  .setShadowBlur(200)
+      .setColor("GRAY")
 
-  .setColor("WHITE")
+      .addCircle(400, 130, 110)
 
-  .addRect(10,10,780,340)
+      .addCircularImage(memberavatar, 400, 120, 100)
 
-  .setColor("GRAY")
+      .setTextAlign("center")
 
-  .addCircle(400, 130, 110)
+      .setTextFont("26px Impact")
 
-  .addCircularImage(memberavatar, 400, 120, 100)
+      .addText(
+        `Goodbye ${member.user.username} Semoga kamu tetap mengingat server ini`,
+        400,
+        265
+      )
 
-  .setTextAlign("center")
+      .addText(
+        `Now the server Member is ${member.guild.memberCount} Members`,
+        400,
+        300
+      );
 
-  .setTextFont('26px Impact')
+    const attachment = new Discord.Attachment(
+      welcomeCB.toBuffer(),
+      "image.jpeg"
+    );
 
-  .addText(`Goodbye ${member.user.username} Semoga kamu tetap mengingat server ini`, 400, 265)
+    welcomeChannel.send(
+      `Goodbye ${member}, I Hope You Comeback Again 😭`,
+      attachment
+    );
+  }
+});
 
-  .addText(`Now the server Member is ${member.guild.memberCount} Members`, 400, 300)
-
-  const attachment = new Discord.Attachment(welcomeCB.toBuffer(), 'image.jpeg');
-
-  
-
-  welcomeChannel.send(`Goodbye ${member}, I Hope You Comeback Again 😭`, attachment);
-
-}
-
-})
-
-client.on('message', async msg => {
-
+client.on("message", async msg => {
   if (msg.author.bot) return;
 
   if (msg.channel.type === "dm") return;
 
-  
-
   let crafty = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
 
-  if(!crafty[msg.guild.id]){ 
-
-     crafty[msg.guild.id] = {
-
-       prefix: config.prefix
-
-     }
-
+  if (!crafty[msg.guild.id]) {
+    crafty[msg.guild.id] = {
+      prefix: config.prefix
+    };
   }
 
-//End of code Prefix Command
+  //End of code Prefix Command
 
- /* if (msg == `<@${client.user.id}>` || msg == `<@!${client.user.id}>`) {
+  /* if (msg == `<@${client.user.id}>` || msg == `<@!${client.user.id}>`) {
 
     let tagEmbed = new Discord.RichEmbed()    
 
@@ -316,29 +289,21 @@ client.on('message', async msg => {
 
 }*/
 
-  
-
   //let xpadd = Math.floor(Math.random() * 5) + 10
 
   //console.log(xpadd);
 
-  
-
   //if(!xp[msg.author.id]){
 
-    //xp[msg.author.id] = {
+  //xp[msg.author.id] = {
 
-      //xp: 0,
+  //xp: 0,
 
-      //level: 1
+  //level: 1
 
-    //};
+  //};
 
   //}
-
-  
-
-  
 
   //let curxp = xp[msg.author.id].xp;
 
@@ -348,27 +313,23 @@ client.on('message', async msg => {
 
   //xp[msg.author.id].xp = curxp + xpadd;
 
-  
-
   //if(nxtlvl <= xp[msg.author.id].xp){
 
-    //xp[msg.author.id].level = curlvl + 1;
+  //xp[msg.author.id].level = curlvl + 1;
 
-    //msg.channel.send(`Leveled Up: \nNew Level: **${curlvl + 1}**`).then(msg => msg.delete(1000))
+  //msg.channel.send(`Leveled Up: \nNew Level: **${curlvl + 1}**`).then(msg => msg.delete(1000))
 
-    //console.log(`Level is ${xp[msg.author.id].level}`);
+  //console.log(`Level is ${xp[msg.author.id].level}`);
 
   //}
 
   //fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
 
-    //  if(err) console.log(err);
+  //  if(err) console.log(err);
 
   //})
 
-  
-
-//End of code Mention Bot  
+  //End of code Mention Bot
 
   let prefix = crafty[msg.guild.id].prefix;
 
@@ -376,11 +337,14 @@ client.on('message', async msg => {
 
   const messageArray = msg.content.split(" ");
 
-  const args = msg.content.slice(prefix.length).trim().split(' ');
+  const args = msg.content
+    .slice(prefix.length)
+    .trim()
+    .split(" ");
 
-  const searchString = messageArray.slice(1).join(' ');
+  const searchString = messageArray.slice(1).join(" ");
 
-  const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
+  const url = args[1] ? args[1].replace(/<(.+)>/g, "$1") : "";
 
   console.log(searchString);
 
@@ -392,46 +356,37 @@ client.on('message', async msg => {
 
   msg.member.voiceChannel === msg.member.voice;
 
-// Variables ^^^^^^^^
+  // Variables ^^^^^^^^
 
   try {
+    if (client.aliases[cmd]) {
+      delete require.cache[
+        require.resolve(`./commands/${client.aliases[cmd]}`)
+      ];
 
-      if(client.aliases[cmd]){
+      require(`./commands/${client.aliases[cmd]}`).run(client, msg, args);
+    } else {
+      delete require.cache[require.resolve(`./commands/${cmd}.js`)];
 
-				delete require.cache[require.resolve(`./commands/${client.aliases[cmd]}`)];
+      let commandFile = require(`./commands/${cmd}.js`);
 
-        require(`./commands/${client.aliases[cmd]}`).run(client, msg, args);
-
-      }else{
-
-    delete require.cache[require.resolve(`./commands/${cmd}.js`)];
-
-		let commandFile = require(`./commands/${cmd}.js`);
-
-    commandFile.run(client, msg, args, func);
-
-      }
-
+      commandFile.run(client, msg, args, func);
+    }
   } catch (e) {
-
-    console.log(e.stack)                                                                  
-
+    console.log(e.stack);
   } finally {
+    console.log(
+      `${msg.author.tag} used ${cmd} in guild ${msg.guild.name} (${msg.guild.id})`
+    );
+  }
 
-   console.log(`${msg.author.tag} used ${cmd} in guild ${msg.guild.name} (${msg.guild.id})`)
+  //End of code CMD Handler
 
-}
+  //when bot ready
 
-//End of code CMD Handler
+  // Music Command
 
-  
-
-  
-
-// Music Command
-
-// ============================================================================================================================================
-
+  // ============================================================================================================================================
 });
 
 exports.handleVideo = handleVideo;
@@ -439,34 +394,37 @@ exports.handleVideo = handleVideo;
 exports.queue = queue;
 
 async function handleVideo(video, message, voiceChannel, playlist = false) {
+  const serverQueue = queue.get(message.guild.id);
 
-	const serverQueue = queue.get(message.guild.id);
+  //	  const curentDurationMinute = Math.floor(serverQueue.connection.dispatcher.time/60000) < 10 ? `0${Math.floor(serverQueue.connection.dispatcher.time/60000)}` : Math.floor(serverQueue.connection.dispatcher.time/60000);
 
-//	  const curentDurationMinute = Math.floor(serverQueue.connection.dispatcher.time/60000) < 10 ? `0${Math.floor(serverQueue.connection.dispatcher.time/60000)}` : Math.floor(serverQueue.connection.dispatcher.time/60000);
+  //  const currentDurationSeconds = Math.floor((serverQueue.connection.dispatcher.time%60000)/1000) < 10 ? `0${Math.floor((serverQueue.connection.dispatcher.time%60000)/1000)}` : Math.floor((serverQueue.connection.dispatcher.time%60000)/1000);
 
-//  const currentDurationSeconds = Math.floor((serverQueue.connection.dispatcher.time%60000)/1000) < 10 ? `0${Math.floor((serverQueue.connection.dispatcher.time%60000)/1000)}` : Math.floor((serverQueue.connection.dispatcher.time%60000)/1000);
+  console.log(video);
 
-console.log(video);
+  const song = {
+    id: video.id,
 
-	const song = {
-
-		id: video.id,
-
-		title: Util.escapeMarkdown(video.title),
+    title: Util.escapeMarkdown(video.title),
 
     uploaded: video.channel.title,
 
     authors: message.author,
 
-    create: (video.publishedAt).toISOString().replace(/T/, ' ').replace(/\..+/, ''),
+    create: video.publishedAt
+      .toISOString()
+      .replace(/T/, " ")
+      .replace(/\..+/, ""),
 
     voicechan: message.member.voiceChannel.name,
 
-    durationmm: video.durationSeconds ? video.durationSeconds : video.duration / 1000,
+    durationmm: video.durationSeconds
+      ? video.durationSeconds
+      : video.duration / 1000,
 
     channel: `https://www.youtube.com/channel/${video.channel.id}`,
 
-		url: `https://www.youtube.com/watch?v=${video.id}`,
+    url: `https://www.youtube.com/watch?v=${video.id}`,
 
     durationh: video.duration.hours,
 
@@ -475,156 +433,142 @@ console.log(video);
     durations: video.duration.seconds,
 
     duration: video.duration
+  };
 
-	};
-
-	if (!serverQueue) {
-
-		const queueConstruct = {
-
+  if (!serverQueue) {
+    const queueConstruct = {
       user: message.author,
 
-			textChannel: message.channel,
+      textChannel: message.channel,
 
-			voiceChannel: voiceChannel,
+      voiceChannel: voiceChannel,
 
-			connection: null,
+      connection: null,
 
-			songs: [],
+      songs: [],
 
-			volume: 100,
+      volume: 100,
 
-			playing: true,
+      playing: true,
 
       loop: false
+    };
 
-		};
+    queue.set(message.guild.id, queueConstruct);
 
-		queue.set(message.guild.id, queueConstruct);
+    queueConstruct.songs.push(song);
 
-		queueConstruct.songs.push(song);
+    try {
+      var connection = await voiceChannel.join();
 
-    
+      queueConstruct.connection = connection;
 
-		try {
+      play(message.guild, queueConstruct.songs[0]);
+    } catch (error) {
+      console.error(`I could not join the voice channel: ${error}`);
 
-			var connection = await voiceChannel.join();
+      queue.delete(message.guild.id);
 
-			queueConstruct.connection = connection;
-
-			play(message.guild, queueConstruct.songs[0]);
-
-		} catch (error) {
-
-			console.error(`I could not join the voice channel: ${error}`);
-
-			queue.delete(message.guild.id);
-
-			return message.channel.send(`I could not join the voice channel: ${error}`);
-
-		}
-
-	} else {
-
-		serverQueue.songs.push(song);
-
-		console.log(serverQueue.songs);
-
-		if (playlist) return undefined;
-
-    var addedembed = new RichEmbed()
-
-    .setColor(`#ecd4fc`)
-
-    .setDescription(`**[${song.title}](${song.url})**`)
-
-  .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
-
-  .setFooter(`Requested By ${song.authors.tag}`)
-
+      return message.channel.send(
+        `I could not join the voice channel: ${error}`
+      );
+    }
+  } else {
     serverQueue.songs.push(song);
 
     console.log(serverQueue.songs);
 
     if (playlist) return undefined;
 
-    else return message.channel.send(`<:mAdd:603846847127093248> ${song.title} added!`, addedembed);
+    var addedembed = new RichEmbed()
 
+      .setColor(`#ecd4fc`)
+
+      .setDescription(`**[${song.title}](${song.url})**`)
+
+      .setThumbnail(
+        `https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`
+      )
+
+      .setFooter(`Requested By ${song.authors.tag}`);
+
+    serverQueue.songs.push(song);
+
+    console.log(serverQueue.songs);
+
+    if (playlist) return undefined;
+    else
+      return message.channel.send(
+        `<:mAdd:603846847127093248> ${song.title} added!`,
+        addedembed
+      );
   }
 
   return undefined;
-
 }
 
 function play(guild, song) {
   const serverQueue = queue.get(guild.id);
 
   if (!song) {
-
     serverQueue.voiceChannel.leave();
 
     queue.delete(guild.id);
 
     return;
-
   }
 
   console.log(serverQueue.songs);
 
-   const dispatcher = serverQueue.connection.playStream(ytdl(song.url, { filter: 'audioonly', quality: 'highest' }))
+  const dispatcher = serverQueue.connection
+    .playStream(ytdl(song.url, { filter: "audioonly", quality: "highest" }))
 
-  .on('end', reason => {
+    .on("end", reason => {
+      let end = new Discord.RichEmbed()
 
-    let end = new Discord.RichEmbed()
+        .setDescription(`**${song.title} is end!**`)
 
-    .setDescription(`**${song.title} is end!**`)
+        .setColor(`ecd4fc`);
 
-    .setColor(`ecd4fc`)
+      serverQueue.textChannel.send(end);
 
-    serverQueue.textChannel.send(end)
+      if (reason === "Stream is not generating quickly enough.")
+        console.log("Song ended.");
+      else console.log(reason);
 
-    if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
+      let shifed = serverQueue.songs.shift();
 
-    else console.log(reason);
+      if (serverQueue.loop) serverQueue.songs.push(shifed); //push back!
 
-    let shifed = serverQueue.songs.shift();
+      play(guild, serverQueue.songs[0]);
+    })
 
-    if(serverQueue.loop) serverQueue.songs.push(shifed) //push back! 
-
-    play(guild, serverQueue.songs[0]);
-
-  })
-
-  .on('error', error => console.error(error));
+    .on("error", error => console.error(error));
 
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 100);
 
-  
-
   var playembed = new RichEmbed()
 
-  .setColor(`#ecd4fc`)
+    .setColor(`#ecd4fc`)
 
-  .setAuthor(`Now playing:`)//, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
+    .setAuthor(`Now playing:`) //, `https://cdn.discordapp.com/emojis/594866513555750951.png?v=1`)
 
-  .setThumbnail(`https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`)
+    .setThumbnail(
+      `https://i.ytimg.com/vi/${song.id}/default.jpg?width=80&height=60`
+    )
 
-  .setDescription(`**[${song.title}](${song.url}) ${require('./util.js').timeString(song.durationmm)}**`)
+    .setDescription(
+      `**[${song.title}](${song.url}) ${require("./util.js").timeString(
+        song.durationmm
+      )}**`
+    )
 
-  .setFooter(`Added by ${song.authors.tag}`)//, song.user.displayAvatarURL)//, song.author.displayAvatarURL)
+    .setFooter(`Added by ${song.authors.tag}`); //, song.user.displayAvatarURL)//, song.author.displayAvatarURL)
 
-  
-
-	serverQueue.textChannel.send(playembed);
-
+  serverQueue.textChannel.send(playembed);
 }
 
 //==================
-
-          
-
 // ============================================================================================================================================
-
-  
 
 client.login(process.env.TOKEN);
