@@ -54,7 +54,7 @@ exports.run = (bot, message, args, client) => {
       "`clear  prefix  mute  unmute  kick  warn`",
       false
     )
-    .addField("Other commands will be added soon:ok_hand:", "_ ", "true") //ngapain? ~andra
+    .addField("Other commands will be added soon:ok_hand:")
     .setFooter(
       "©Release 2019 | bletik Bot | This bot is still under Development"
     )
