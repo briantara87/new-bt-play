@@ -1,5 +1,10 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
+const role = <guild>.roles.cache.find(role => role.name === '>');
+
+const member = <message>.mentions.members.first();
+
+member.roles.add(role);
 exports.run = async (client, message, args) => {
   let embed = new Discord.RichEmbed()
     .setTitle("Evaluation")
