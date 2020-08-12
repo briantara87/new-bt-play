@@ -6,11 +6,11 @@ exports.run = async (client, message, args) => {
 
   let embed = new Discord.RichEmbed()
 
-    .setTitle("Evaluation")
+    .setTitle("developer")
 
     .setDescription(
 
-      "Sorry, the `eval` command can only be executed by the Developer."
+      "Sorry, the `dev` command can only be executed by the Developer."
 
     )
 
@@ -80,16 +80,13 @@ await bletik.addrole(bletik.id)
 
   await bletik.author.id.addrole(bletik,"478547279104442368");
 
-      .setColor("BLUE");
-
-    message.channel.send({ embed });
-
-  } catch (err) {
-
-    message.channel.send(`\`ERROR\` \`\`\`js\n${clean(err)}\n\`\`\``);
+  bletik.addRole(bletik);
+  bletik.addrole.id("478547279104442368")
 
   }
+module.exports.help = {
 
-  message.delete ();
+  name: "dev"
 
 };
+
