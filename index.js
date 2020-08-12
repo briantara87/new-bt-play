@@ -20,8 +20,12 @@ const app = express();
 const fs = require("fs");
 
 const sql = require("sqlite");
-sql.open("./assets/guildsettings.sqlite");
+
+const sql.open("./assets/guildsettings.sqlite");
+
 const db = require("quick.db");
+
+const talkedRecently = new Set();
 
 const { Canvas } = require("canvas-constructor");
 
