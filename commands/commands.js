@@ -29,7 +29,7 @@ exports.run = (bot, message, args, client) => {
       `Write \`${crafty[message.guild.id].prefix}(name of the command)\`to use the commands\n\n`,
       false
     )
-   /* .addField(
+    /* .addField(
       "Commands :",
       `:grey_exclamation: HELP\n» If you need help to use this bot\n:grey_question: INFO\n» Information of the bot\n:desktop: CMDS\n » Avaible commands to use\n<:Youtube:588594913243955200> PLAY\n» Play your music with ${crafty[message.guild.id].prefix}play [URL/NAME]\n» Right now our bot is only can play from youtube\n:pause_button: PAUSE\n» You don't want to miss your favorite video / song?\n:stop_button: STOP\n» You don't want bletik tired?\n:repeat: LOOP\n» You want to loop your Video/Songs?\n:speaker: VOLUME\n» bletik is too noisy?\n:next_track: SKIP\n» You don't like it? SKIP IT\n:inbox_tray: INVITE\n» Take bletik with you <3\n:satellite: PING\n» Check the speed that made bletik and you meet`,
       `false`
@@ -54,7 +54,7 @@ exports.run = (bot, message, args, client) => {
       "`clear  prefix  mute  unmute  kick  warn`",
       false
     )
-    .addField("Other commands will be added soon :ok_hand:", "_ _", "true") //ngapain? ~andra
+    .addField("Other commands will be added soon:ok_hand:", "_ ", "true") //ngapain? ~andra
     .setFooter(
       "©Release 2019 | bletik Bot | This bot is still under Development"
     )
