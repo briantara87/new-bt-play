@@ -1,4 +1,7 @@
-const Discord = module.require("discord.js");
+cnst Discord = require("discord.js");
+
+module.exports.run = async (bot, message, args) => {
+
 
 const ms = require("ms");
 
@@ -10,35 +13,13 @@ module.exports.run = async (bot, message, args) => {
       return message.reply(":x: " + "| You need to mention a user/member!");
 
     
-    if (!time2) {
-      member2.addRole(muteRole2.id);
+    if (!bletik) {
+      bletik.addRole(bletik.id);
 
       message.channel.send(
-        member2 + ` you have been given the permanent role: ` + muteRole2.name
+        bletik + ` you have been given the permanent role: ` + bletik.name
       );
     } else {
-      member2.addRole(muteRole2.id);
-
-      message.channel.send(
-        member2 +
-          ` you have been given the role: ` +
-          muteRole2.name +
-          ` for: ${ms(ms(time2), { long: true })}`
-      );
-
-      setTimeout(function() {
-        member2.removeRole(muteRole2.id);
-
-        message.channel.send(
-          member2 +
-            ` you role has been taken off of you your glory lasted: ${ms(
-              ms(time2),
-              { long: true }
-            )}`
-        );
-      }, ms(time2));
-    }
-  } else {
     return message.reply(
       ":x: " + '| You need to have the "ADMINISTRATOR" Permission'
     );
@@ -48,3 +29,4 @@ module.exports.run = async (bot, message, args) => {
 module.exports.help = {
   name: "addrole"
 };
+}
