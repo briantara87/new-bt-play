@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-       
+exports.run = async (client, message, args) => {
   let embed = new Discord.RichEmbed()
     .setTitle("Evaluation")
     .setDescription(
