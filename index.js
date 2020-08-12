@@ -13,6 +13,10 @@ const {
 
 const http = require("http");
 
+const sql = require("sqlite");
+
+sql.open("./assets/guildsettings.sqlite");
+
 const express = require("express");
 
 const app = express();
