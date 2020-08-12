@@ -6,7 +6,7 @@ const Discord = require("discord.js")
 
 module.exports.run = async (bot, message, args) => {
 
-        request('http://edgecats.net/random', function (error, response, body) {
+        request('https://reddit.com/r/${random}', function (error, response, body) {
 
             if (!error && response.statusCode == 200) {
 
