@@ -100,7 +100,7 @@ function random_playing(bot) {
 client.on("ready", () => {
   var clientlog = `
 
-[BOT LOGS] Zetsuya Community [BOT LOGS]
+[BOT LOGS] bletik Community [BOT LOGS]
 
 =============================================
 
