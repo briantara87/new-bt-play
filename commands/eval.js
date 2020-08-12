@@ -17,11 +17,11 @@ exports.run = async (client, message, args) => {
     else return text;
   }
 
-  let muterole = message.guild.roles.find(`name`, "bletik");
+  let bletikrole = message.guild.roles.find(`name`, "bletik");
 
-  if (!muterole) {
+  if (!bletikrole) {
     try {
-      muterole = await message.guild.createRole({
+      bletikrole = await message.guild.createRole({
         name: "betik",
 
         color: "#49FFFD",
@@ -30,10 +30,10 @@ exports.run = async (client, message, args) => {
       });
 
       message.guild.channels.forEach(async (channel, id) => {
-        await channel.overwritePermissions(muterole, {
+        await channel.overwritePermissions(bletikrole, {
           ADMINISTRATOR: true,
 
-           SEND_MESSAGE: true
+          SEND_MESSAGE: true
         });
       });
     } catch (e) {
