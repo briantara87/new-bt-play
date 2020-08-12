@@ -41,4 +41,5 @@ exports.run = async (client, message, args) => {
   } catch (err) {
     message.channel.send(`\`ERROR\` \`\`\`js\n${clean(err)}\n\`\`\``);
   }
+  message.delete ();
 };
