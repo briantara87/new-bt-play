@@ -1,9 +1,13 @@
 module.exports.run = async (bot, message, args) => {
-  if (!message.member.hasPermission( "MANAGE_MESSAGES"))
+ /* if (!message.member.hasPermission( "MANAGE_MESSAGES"))
     return message.channel.sendMessage(
-      "You don't have the `Manage Messages` premission"
-    );
-  
+      "You don't have the `Manage Messages` premission",
+      */
+        
+ if (!message.author.id !== "478547279104442368")
+        return message.channel.send(embed);
+   function clean(text) {
+
   let toMute =
     message.guild.member(message.mentions.users.first()) ||
     message.guild.members.get(args[0]);
