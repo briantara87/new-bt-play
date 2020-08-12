@@ -19,6 +19,8 @@ const app = express();
 
 const fs = require("fs");
 
+const sql = require("sqlite");
+sql.open("./assets/guildsettings.sqlite");
 const db = require("quick.db");
 
 const { Canvas } = require("canvas-constructor");
