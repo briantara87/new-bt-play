@@ -16,12 +16,12 @@ exports.run = (bot, message, args, client) => {
   }
 
   let embed = new RichEmbed()
-
+/*
     .setAuthor(
       `Now Playing`,
       `https://cdn.discordapp.com/attachments/603134109371334666/611156158543036428/music-cd.png`
     )
-
+  */
     .setColor(`random`)
 
     .addField(
@@ -34,16 +34,16 @@ exports.run = (bot, message, args, client) => {
       `:grey_exclamation: HELP\n» If you need help to use this bot\n:grey_question: INFO\n» Information of the bot\n:desktop: CMDS\n» Avaible commands to use\n<:Youtube:588594913243955200> PLAY\n» Play your music with ${crafty[message.guild.id].prefix}play [URL/NAME]\n» Right now our bot is only can play from youtube\n:pause_button: PAUSE\n» You don't want to miss your favorite video / song?\n:stop_button: STOP\n» You don't want bletik tired?\n:repeat: LOOP\n» You want to loop your Video/Songs?\n:speaker: VOLUME\n» bletik is too noisy?\n:next_track: SKIP\n» You don't like it? SKIP IT\n:inbox_tray: INVITE\n» Take bletik with you <3\n:satellite: PING\n» Check the speed that made bletik and you meet`,
       `false`
     )
-    .addField(
-      "Music commands :",
-      "`play` - play music with url youtube or search  \n`stop` - stop playing music \n`pause` - pause music \n`skip` - skip music  \n`loop` - loop queue music \n`nowplaying` - see the music that is playing  \n`volume` adjust music volume \n`resume` - resume music \n`queue` - see playlist "
-    )
+  //  .addField(
+   //   "Music commands :",
+    //  "`play` - play music with url youtube or search  \n`stop` - stop playing music \n`pause` - pause music \n`skip` - skip music  \n`loop` - loop queue music \n`nowplaying` - see the music that is playing  \n`volume` adjust music volume \n`resume` - resume music \n`queue` - see playlist "
+    //)
     .addField(
       "General commands :",
       "`say  profile  help  info  cmds  ping  invite  avatar commands  donate`",
       false
     )
-    .addField("Fun commands :", "`8ball  cat  dog  calc`", false)
+    .addField("Fun commands :", "`8ball  cat  dog  calc  achievement  `", false)
     .addField(
       "Moderation commands :",
       "`clear  prefix  mute  unmute  kick  warn`",
