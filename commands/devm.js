@@ -11,54 +11,41 @@ module.exports.run = async (bot, message, args) => {
     message.mentions.users.first() || message.guild.members.get(args[0])
 
   );
-
-  if (!tomute) return message.channel.send("Please tag user to mute!");
-
-   if (message.author.id !== "478547279104442368") {
-
+    if (message.author.id !== "478547279104442368")
     return message.channel.send(
+      "Sorry, you don't have permissions devloper 
+ use this!"
+    );
 
-      "Sorry, you don't have permissions devloper to use this!"
-             );  
-       if (tomute.id === message.author.id)
+  if (tomute.hasPermission("MANAGE_MESSAGES"))
+    return message.channel.send("I cant mute this user");
 
+  if (tomute.id === message.author.id)
     return message.channel.send("You cannot mute yourself!");
 
   let muterole = message.guild.roles.find(`name`, "prey");
 
   if (!muterole) {
-
     try {
-
       muterole = await message.guild.createRole({
-
         name: "prey",
 
         color: "#840800",
 
         permissions: []
-
+        
       });
-      
 
       message.guild.channels.forEach(async (channel, id) => {
-
         await channel.overwritePermissions(muterole, {
-
           SEND_MESSAGES: false,
 
           ADD_REACTIONS: false
-
         });
-
       });
-
     } catch (e) {
-
       console.log(e.stack);
-
     }
-
   }
 
   let mutetime = args[1];
@@ -70,13 +57,12 @@ module.exports.run = async (bot, message, args) => {
   message.reply(`<@${tomute.id}> has been muted for ${ms(ms(mutetime))}`);
 
   setTimeout(function() {
-
     tomute.removeRole(muterole.id);
 
     message.channel.send(`<@${tomute.id}> has been unmuted!`);
-
   }, ms(mutetime));
 
+  
   message.delete();
 
 };
@@ -98,4 +84,3 @@ module.exports.help = {
   name: "devm"
   
   }
-};
