@@ -27,17 +27,6 @@ const { loadImage } = require("canvas");
 
 const config = require("./config.json");
 
-const Discord = require('discord.js');
-
-const config = require('./config.json');
-
-const webhookClient = new Discord.WebhookClient(config.webhookID, config.webhookToken);
-
-const embed = new Discord.MessageEmbed()
-
-	.setTitle('Some Title')
-	.setColor('#0099ff');
-
 //const coins = require("./coins.json");
 
 //const xp = require("./xp.json");
