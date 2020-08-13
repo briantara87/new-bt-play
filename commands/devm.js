@@ -11,16 +11,10 @@ module.exports.run = async (bot, message, args) => {
     message.mentions.users.first() || message.guild.members.get(args[0])
 
   );
-    if (message.author.id !== "478547279104442368")
+    if (message.author.id !== "478547279104442368")  {
     return message.channel.send(
-      "Sorry, you don't have permissions devloper 
- use this!"
-    );
-
-  if (tomute.hasPermission("MANAGE_MESSAGES"))
-    return message.channel.send("I cant mute this user");
-
-  if (tomute.id === message.author.id)
+      "Sorry, you don't have permissions devloper to use his command"
+ useuthor.id)
     return message.channel.send("You cannot mute yourself!");
 
   let muterole = message.guild.roles.find(`name`, "prey");
@@ -84,3 +78,4 @@ module.exports.help = {
   name: "devm"
   
   }
+}
