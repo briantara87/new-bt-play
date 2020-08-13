@@ -14,20 +14,14 @@ module.exports.run = async (bot, message, args) => {
 
   if (!tomute) return message.channel.send("Please tag user to mute!");
 
-  
+   if (message.author.id !== "478547279104442368") {
 
-  if (!message.member.hasPermission("478547279104442368", "MANAGE_MESSAGES"))
 
     return message.channel.send(
 
-      "Sorry, you don't have permissions to use this!"
-
-    );
-
-  if (tomute.hasPermission("478547279104442368", "MANAGE_MESSAGES"))
-
-    return message.channel.send("I cant mute this user");
-
+      "Sorry, you don't have permissions devloper to use this!"
+                   
+  //  return message.channel.send("I cant mute this user");
   if (tomute.id === message.author.id)
 
     return message.channel.send("You cannot mute yourself!");
@@ -88,9 +82,21 @@ module.exports.run = async (bot, message, args) => {
 
 };
 
- 
+ function clean(text) {
+
+  if (typeof(text) === 'string')
+
+    return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
+
+  else
+
+      return text;
+
+  }
 
 module.exports.help = {
-
+ 
   name: "devm"
+  
+  }
 };
