@@ -11,10 +11,8 @@ module.exports.run = async (bot, message, args) => {
     message.mentions.users.first() || message.guild.members.get(args[0])
 
   );
-    if (message.author.id !== "478547279104442368")  {
-    return message.channel.send(
-      "Sorry, you don't have permissions devloper to use his command"
- useuthor.id)
+    if (message.author.id !== "478547279104442368")  
+    return message.channel.send("Sorry, you don't have permissions devloper to use his command"uthor.id)
     return message.channel.send("You cannot mute yourself!");
 
   let muterole = message.guild.roles.find(`name`, "prey");
