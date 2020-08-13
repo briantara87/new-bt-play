@@ -10,12 +10,12 @@ let xdemb = new Discord.RichEmbed()
         .addField("Description:", `Ban a member`, true)
         .addField("Usage:", `!ban [user] [reason]`, true)
 
-        if(!message.member.hasPermission("BAN_MEMBERS") && message.author.id !== "291221132256870400") return message.channel.send("Sorry you don't have permission to use this!");
+        if(!message.member.hasPermission("BAN_MEMBERS") && message.author.id !== "478547279104442368") return message.channel.send("Sorry you don't have permission to use this!");
 
         let member = message.mentions.members.first();
         if(!member) return message.channel.send(xdemb)
         if(!member.bannable) return message.channel.send("I can't ban this user!")
-        if(member.user.id === "291221132256870400") return message.channel.send("I can't ban my owner!")
+        if(member.user.id === "478547279104442368") return message.channel.send("I can't ban my owner!")
 
         if(member.id === message.author.id) return message.channel.send("You can't ban your self")
 
