@@ -46,7 +46,7 @@ exports.run = (bot, message, args, client) => {
     )
     .addField(
       "Fun commands :",
-      "`8ball  cat  dog  calc  achievement  fish  poll`",
+      "`8ball  cat  dog  roll  calc  achievement  fish  poll`",
       false
     )
     .addField(
