@@ -3,16 +3,22 @@ const Discord = require("discord.js");
 const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
-
   //!mute @user 1s/m/h/d
 
   let tomute = message.guild.member(
-
     message.mentions.users.first() || message.guild.members.get(args[0])
-
   );
-    if (message.author.id !== "478547279104442368")  
-    return message.channel.send("Sorry, you don't have permissions devloper to use his command"uthor.id)
+  if (!tomute) return message.channel.send("Please tag user to mute!");
+  
+   if (message.author.id !== "478547279104442368")
+  return message.channel.send(
+      "Sorry, you don't have permissions to use this!"
+    );
+
+  if (tomute.hasPermission("MANAGE_MESSAGES"))
+    return message.channel.send("I cant mute this user");
+
+  if (tomute.id === message.author.id)
     return message.channel.send("You cannot mute yourself!");
 
   let muterole = message.guild.roles.find(`name`, "prey");
@@ -25,7 +31,6 @@ module.exports.run = async (bot, message, args) => {
         color: "#840800",
 
         permissions: []
-        
       });
 
       message.guild.channels.forEach(async (channel, id) => {
@@ -54,26 +59,10 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(`<@${tomute.id}> has been unmuted!`);
   }, ms(mutetime));
 
-  
   message.delete();
-
 };
-
- function clean(text) {
-
-  if (typeof(text) === 'string')
-
-    return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
-
-  else
-
-      return text;
-
-  }
+ 
 
 module.exports.help = {
- 
-  name: "devm"
-  
-  }
-}
+  name: "mute"
+};
