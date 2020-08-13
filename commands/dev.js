@@ -16,13 +16,11 @@ module.exports.run = async (bot, message, args) => {
 
    if (message.author.id !== "478547279104442368") {
 
-
     return message.channel.send(
 
       "Sorry, you don't have permissions devloper to use this!"
-                   
-  //  return message.channel.send("I cant mute this user");
-  if (tomute.id === message.author.id)
+             );  
+       if (tomute.id === message.author.id)
 
     return message.channel.send("You cannot mute yourself!");
 
@@ -41,6 +39,7 @@ module.exports.run = async (bot, message, args) => {
         permissions: []
 
       });
+      
 
       message.guild.channels.forEach(async (channel, id) => {
 

@@ -1,4 +1,3 @@
-const { handleVideo, youtube } = require("../index.js");
 
 exports.run = async(client, msg, args) => {
   const queue = new Map()//baru bisa
