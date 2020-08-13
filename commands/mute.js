@@ -10,10 +10,11 @@ module.exports.run = async (bot, message, args) => {
   );
   if (!tomute) return message.channel.send("Please tag user to mute!");
   
-  if (!message.member.hasPermission( "MANAGE_MESSAGES"))
-    return message.channel.send(
+  if (!message.member.hasPermission("MANAGE_MESSAGE")  && message.author.id !== "478547279104442368") return message.channel.send("Sorry, you don't have permissions to use this!");
+
+  return message.channel.send(
       "Sorry, you don't have permissions to use this!"
-    );
+  );
 
   if (tomute.hasPermission("MANAGE_MESSAGES"))
     return message.channel.send("I cant mute this user");
