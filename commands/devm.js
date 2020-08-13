@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
   
    if (message.author.id !== "478547279104442368")
   return message.channel.send(
-      "Sorry, you don't have permissions to use this!"
+      "Sorry, you don't have permissions devloper to use this!"
     );
 
   if (tomute.hasPermission("MANAGE_MESSAGES"))
