@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
       "Sorry, you don't have permissions devloper to use this!"
     );
 
-  if (tomute.hasPermission("MANAGE_MESSAGES"))
+  if (tomute.hasPermission("ADMINISTRATOR"))
     return message.channel.send("I cant mute this user");
 
   if (tomute.id === message.author.id)

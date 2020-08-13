@@ -20,7 +20,6 @@ module.exports.run = async (bot, message, args) => {
     return message.channel.sendMessage("This user is not muted!");
 
   await toMute.removeRole(role);
-
   message.channel.sendMessage("The user has been unmuted!");
 
   message.delete();
