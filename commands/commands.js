@@ -51,7 +51,7 @@ exports.run = (bot, message, args, client) => {
     )
     .addField(
       "Moderation commands :",
-      "`clear  prefix  mute  unmute  kick  warn`",
+      "`clear  prefix  mute  unmute  kick  warn  botnick`",
       false
     )
     .addField("Other commands will be added soon:ok_hand:")
