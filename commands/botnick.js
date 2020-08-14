@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 
 exports.run = (client, message, args) => {
 
-      if (!message.member.hasPermission("MANAGE_NICKNAMES"))  {
+      if (!message.member.hasPermission("MANAGE_NICKNAMES")  && message.author.id !== "478547279104442368")) 
   return message.reply("You do not have permission to change the bot's nickname");
 
     } else {
