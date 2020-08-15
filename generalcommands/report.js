@@ -17,12 +17,12 @@ const removeCooldown = ((userId, timeInSeconds) => {
     if (index > -1) {
         setTimeout(() => {
             cooldownUsers = cooldownUsers.splice(index, 0);
-        }, timeInSeconds * 1000)
+        }, timeInSeconds * 100000)
     }
 });
 
 if (checkCooldown(message.author.id)) {
-    message.channel.send("Sorry! Please wait another 10 secpmds to report again.");
+    message.channel.send("Sorry! Please wait another 1000 secpmds to report again.");
     return;
 }
 cooldownUsers.push(message.author.id);
