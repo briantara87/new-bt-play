@@ -64,7 +64,10 @@ exports.run = (bot, message, args, client) => {
       "©Release 2019 | bletik Bot | This bot is still under Development"
     );
   
-  message.channel.send(embed);
+  .setTimestamp()
+
+        message.channel.send(embed);
 
   message.delete();
-};
+
+}
