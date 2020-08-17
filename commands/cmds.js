@@ -24,13 +24,13 @@ exports.run = (bot, message, args, client) => {
 
     .setAuthor(
 
-      `Now Playing`,
+      `bt bot`,
 
-      `https://cdn.discordapp.com/attachments/603134109371334666/611156158543036428/music-cd.png`
+      `https://cdn.discordapp.com/attachments/711923492508926006/735016654852849775/artflow_202007211310.png`
 
     )
 
-    .setColor(`#random`)
+    .setColor("random")
 
     //.addField("There is 21 commands you can use", `Write \`${crafty[message.guild.id].prefix}(name of the command)\`to use the commands\n\n`, false)
 
