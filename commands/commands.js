@@ -54,6 +54,10 @@ exports.run = (bot, message, args, client) => {
       "`clear  prefix  mute  unmute  kick  warn  botnick`",
       false
     )
+    .addfield(
+      "play music",
+      
+    )
     .addField("Other commands will be added soon:ok_hand:")
     .setFooter(
       "©Release 2019 | bletik Bot | This bot is still under Development"
