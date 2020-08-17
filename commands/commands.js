@@ -33,28 +33,10 @@ exports.run = (bot, message, args, client) => {
     .setFooter(
 
       "©Release 2019 | bletik Bot | This bot is still under Development"
-
-    );
+)
+    
 
   
-
-  .setTimestamp();
-
-        message.channel.send(embed);
-
-  message.delete();
-
-}
-    .setColor(`#ecd4fc`)
-
-    .addField(
-      "There is commands you can use",
-
-      `Write \`${crafty[message.guild.id].prefix}(name of the command)\`to use the commands\n\n`,
-
-      false
-    )
-
     .setTimestamp();
 
   message.channel.send(embed);
