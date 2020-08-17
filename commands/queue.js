@@ -1,36 +1,18 @@
-const { MessageEmbed } = require("discord.js");
+const { handleVideo, youtube, queue } = require("../index.js");
 
-module.exports = {
+exports.run = async(client, msg, args) => {
+  var serverQueue = queue.get(msg.guild.id);
+  
+  if (!serverQueue) return msg.channel.send('There is nothing playing.');
+		return msg.channel.send(`
+__**Song Queue:**__
 
-  name: "queue",
+${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
 
-  alias: ["q"],
+**Now Playing:** ${serverQueue.songs[0].title}
+		`);
+	}
 
-  description: "Show the music queue and now playing.",
-
-  run: async(client, message) => {
-
-    const serverQueue = client.queue.get(message.guild.id);
-
-    if (!serverQueue) return message.reply("There is nothing playing.").catch(console.error);
-
-    
-
-    let queueEmbed = new MessageEmbed()
-
-      .setTitle("Music Queue")
-
-      .setDescription(serverQueue.songs.map((song, index) => `${index + 1}. ${song.title}`))
-
-      .setColor("RANDOM")
-
-      .setFooter("© Client Developer 2020")
-
-    queueEmbed.setTimestamp();
-
-    return message.channel.send(queueEmbed);
-
-  }
-
-};
-
+exports.help = {
+  name: "queue"
+}

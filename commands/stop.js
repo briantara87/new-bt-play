@@ -1,31 +1,21 @@
-module.exports = {
+// Require Data
+const { queue } = require("../index.js");
 
-  name: "stop",
+// Run's Stop Command
+exports.run = async(client, msg, args) => {
+    const serverQueue = queue.get(msg.guild.id);
+    if (!msg.member.voiceChannel) return msg.channel.send('You are not in a voice channel!');
+		if (!serverQueue) return msg.channel.send('There is nothing playing that I could stop for you.');
+		serverQueue.songs = [];
+		serverQueue.connection.dispatcher.end('Stop command has been used!');
+    return msg.channel.send("Song has been stopped!");
+		return undefined;
+	}
 
-  alias:["dc","leave"],
+exports.conf = {
+  aliases: ['st']
+}
 
-  description: "Stops the music",
-
-  run: async(client, message) => {
-
-    const serverQueue = client.queue.get(message.guild.id);
-
-    if (!message.member.voice.channel)
-
-      return message.reply("You need to join a voice channel first!").catch(console.error);
-
-    if (!serverQueue) return message.reply("There is nothing playing.").catch(console.error);
-
-    const { channel } = message.member.voice;
-
-    if(channel.id !== serverQueue.channel.id) return message.reply("You need join same voice channel with me!")
-
-    serverQueue.songs = [];
-
-    serverQueue.connection.dispatcher.end();
-
-    serverQueue.textChannel.send(`${message.author} ⏹ stopped the music!`).catch(console.error);
-
-  }
-
-};
+exports.help = {
+  name: "stop"
+}

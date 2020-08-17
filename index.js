@@ -27,23 +27,19 @@ const { loadImage } = require("canvas");
 
 const config = require("./config.json");
 
-require("./server.js");
-
 //const coins = require("./coins.json");
 
 //const xp = require("./xp.json");
-/*const YouTube = require("simple-youtube-api");
+
+const YouTube = require("simple-youtube-api");
 
 const ytdl = require("ytdl-core");
 
 const snekfetch = require("snekfetch");
 
 const cooldown = new Collection();
-*/
 
-//coconst ytdlDiscord = require("ytdl-core-discord");
-
-//onst money = require('discord-money');
+//const money = require('discord-money');
 
 const client = new Client({
   disableEvents: [],
@@ -63,7 +59,7 @@ client.commands = fs.readdirSync("./commands");
 
 client.aliases = {};
 
-//const youtube = new YouTube(process.env.YOUTUBE);
+const youtube = new YouTube(process.env.YOUTUBE);
 
 for (const cmd of client.commands) {
   const file = require(`./commands/${cmd}`);

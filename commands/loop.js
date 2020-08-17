@@ -1,31 +1,31 @@
-module.exports = {
+let { RichEmbed } = require('discord.js')
+const { handleVideo, queue } = require("../index.js")
 
-  name: "loop",
-
-  alias:["repeat"],
-
-  description: "Toggle music loop",
-
-  run: async(client, message) => {
-
-    const serverQueue = client.queue.get(message.guild.id);
-
-    if (!serverQueue) return message.reply("There is nothing playing.").catch(console.error);
-
-    const { channel } = message.member.voice;
-
-    if(channel.id !== serverQueue.channel.id || !channel) return message.reply("You need join same voice channel with me!")
-
-    // toggle from false to true and reverse
-
+exports.run = async(client, msg, args) => { //mampus terkejut merah semua :u
+  let message = msg
+  const serverQueue = queue.get(message.guild.id);
+  if(!message.member.voiceChannel) return message.channel.send({
+        embed: {
+            description: `${message.author}, Anda tidak berada di saluran suara!.`
+        }
+    });
+    if(!serverQueue) return message.channel.send({
+        embed: {
+            description: `Tidak ada yang bermain`
+        }
+    });
     serverQueue.loop = !serverQueue.loop;
-
-    return serverQueue.textChannel
-
-      .send(`Loop is now ${serverQueue.loop ? "**on**" : "**off**"}`)
-
-      .catch(console.error);
-
-  }
-
-};
+    client.queue.set(message.guild.id, serverQueue)
+    message.react('🔁');
+    if(serverQueue.loop) return message.channel.send({
+        embed: {
+            description: `:repeat: mengulangi antrian saat ini!`
+        }
+    })
+    message.react('🔁');
+    return message.channel.send({
+        embed: {
+            description: `:repeat: Berhenti mengulangi antrian saat ini!`
+        }
+    })
+}//:V
