@@ -58,7 +58,7 @@ exports.run = (bot, message, args, client) => {
     .setFooter(
       "©Release 2019 | bletik Bot | This bot is still under Development"
     )
-
+     alias:["cmds"]
     .setTimestamp();
 
   message.channel.send(embed);
