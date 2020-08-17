@@ -18,7 +18,6 @@ client.prefix = prefix;
 client.queue = new Map();
 
 client.hastebin = async text => {
-
   const { body } = await snek
 
     .post("https://bin-clientdev.glitch.me/documents")
@@ -26,13 +25,10 @@ client.hastebin = async text => {
     .send(text);
 
   return `https://bin-clientdev.glitch.me/${body.key}`;
-
 };
 
-
-
-const http = require('http');
-const express = require('express');
+const http = require("http");
+const express = require("express");
 const app = express();
 app.get("/", (request, response) => {
   console.log(Date.now() + " Ping Received");
@@ -40,20 +36,15 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT);
 setInterval(() => {
-  http.get(`http://zetsuya.glitch.me/`);
+  http.get(`http://bletik.glitch.me/`);
 }, 280000);
 
-/*
-
-
 client.on("message", msg => {
-
   if (msg.author.bot) return;
 
   if (!msg.guild) return;
 
   if (msg.content == `<@${client.user.id}>`) {
-
     const embed = new discord.MessageEmbed()
 
       .setDescription(`:wave: | My prefix is ${prefix}`)
@@ -63,7 +54,6 @@ client.on("message", msg => {
       .setColor("RANDOM");
 
     msg.channel.send(embed);
-
-  })
-  client.login(process.env.TOKEN);
-  */
+  };
+});
+client.login(process.env.TOKEN);
