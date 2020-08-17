@@ -40,7 +40,12 @@ const snekfetch = require("snekfetch");
 
 const cooldown = new Collection();
 
-//const money = require('discord-money');
+const ytdlDiscord = require("ytdl-core-discord");
+
+
+//coconst ytdlDiscord = require("ytdl-core-discord");
+
+const money = require('discord-money');
 
 const client = new Client({
   disableEvents: [],
