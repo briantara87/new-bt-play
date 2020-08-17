@@ -7,5 +7,5 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT);
 setInterval(() => {
-  http.get(`http://bletikbt.glitch.me/`);
-})
+  http.get(`http://zetsuya.glitch.me/`);
+}, 280000);
