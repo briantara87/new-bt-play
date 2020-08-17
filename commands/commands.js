@@ -55,16 +55,15 @@ exports.run = (bot, message, args, client) => {
       false
     )
     .addfield(
-      "play music",
-      
+      "play music :",
+      "`loop  nowplaying  pause  play  playlist  queue  remove  remove  search  skip  skipto  stats  stop  volume`",
+      false
     )
     .addField("Other commands will be added soon:ok_hand:")
     .setFooter(
       "©Release 2019 | bletik Bot | This bot is still under Development"
-    )
-     alias:["cmds"]
-    .setTimestamp();
-
+    );
+  
   message.channel.send(embed);
 
   message.delete();
