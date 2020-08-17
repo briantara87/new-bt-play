@@ -21,30 +21,7 @@ exports.run = (bot, message, args, client) => {
       `Now Playing`,
       `https://cdn.discordapp.com/attachments/603134109371334666/611156158543036428/music-cd.png`
     )
-    .addfield(
-      "`loop  nowplaying  pause  play  playlist  queue  remove  remove  search  skip  skipto  stats  stop  volume`",
 
-      false
-
-    )
-
-    .addField("Other commands will be added soon:ok_hand:")
-
-    .setFooter(
-
-      "©Release 2019 | bletik Bot | This bot is still under Development"
-
-    );
-
-  
-
-  .setTimestamp();
-
-        message.channel.send(embed);
-
-  message.delete();
-
-}
     .setColor(`#ecd4fc`)
 
     .addField(
