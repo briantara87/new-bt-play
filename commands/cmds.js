@@ -53,7 +53,7 @@ exports.run = (bot, message, args, client) => {
     .addField(
       "Music commands :",
 
-      "`loop  nowplaying  pause  play  playlist  queue  remove  remove  search  skip  skipto  stats  stop  volume`"
+      "`loop  lyrics  shuffle pruning nowplaying  pause  play  playlist  queue  remove  search  skip  skipto  stop  volume`"
     )
     .addField("Other commands will be added soon :ok_hand:", "_ _", "true") //ngapain? ~andra
 
