@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 
     .addField("Bot Name", `<:robot:736930869184299070> ${bot.user.username}`, inline)
 
-    .addField("Bot Owner", "<a:s_ngibing:725932668138684446> <@478547279104442368>", inline )
+    .addField("Bot Owner", "<:bletik:723500011547131975> <@478547279104442368>", inline )
 
     .addField("Servers", `🛡 ${servsize}`, inline)
 
