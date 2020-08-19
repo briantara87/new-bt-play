@@ -1,45 +1,51 @@
-const Djs = require("discord.js");
+const Discord = require("discord.js");
 
-const { RichEmbed, Client } = require("discord.js");
+module.exports.run = async (bot, message, args) => {
 
-const config = require("../config.json");
+    let inline = true
 
-const fs = require("fs");
+    let bicon = bot.user.displayAvatarURL;
 
-exports.run = (bot, message, args, client) => {
-  let crafty = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+    let usersize = bot.users.size
 
-  if (!crafty[message.guild.id]) {
-    crafty[message.guild.id] = {
-      prefix: config.prefix
-    };
-  }
+    let chansize = bot.channels.size
 
-  let embed = new RichEmbed()
+    let uptimxd = bot.uptime 
 
-    .setAuthor(
-      `bt bot`,
+    let servsize = bot.guilds.size
 
-      `https://cdn.discordapp.com/attachments/711923492508926006/735016654852849775/artflow_202007211310.png`
-    )
+    let botembed = new Discord.RichEmbed()
 
-    .addField(
-      `${client.users.size} Users`,
-      )
-    .addfield(
-      `${client.channels.size} Channels`,
-      `false`
-      
-      `${client.guilds.size} Server`
-      `false`
-    )
-    .setFooter(
-      "©Release 2019 | bletik Bot | This bot is still under Development"
-    )
+    .setColor("#00ff00")
 
-    .setTimestamp();
+    .setThumbnail(bicon)
 
-  message.channel.send(embed);
+    .addField("Bot Name", `<:bot:736930869184299070> ${bot.user.username}`, inline)
 
-  message.delete();
-};
+    .addField("Bot Owner", "<:bletik bt:424890572919013397> <@291221132256870400>", inline )
+
+    .addField("Servers", `🛡 ${servsize}`, inline)
+
+    .addField("Channels", `📁 ${chansize}`, inline)
+
+    .addField("Users", `<:user:424958082691629057> ${usersize}`, inline)
+
+    .addField("Bot Library", "<:discordjs:425241283779362816> Discord.js", inline)
+
+    .addField("Created On", bot.user.createdAt)
+
+    .setFooter(`Information about: ${bot.user.username}. Developed by: Odar`)
+
+    .setTimestamp()
+
+    
+
+    message.channel.send(botembed);
+
+}
+
+module.exports.help = {
+
+  name:"botinfo"
+
+}
