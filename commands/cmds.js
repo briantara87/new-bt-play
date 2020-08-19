@@ -4,7 +4,8 @@ const { RichEmbed, Client } = require("discord.js");
 
 const config = require("../config.json");
 
-const fs = require("fs");
+const fs = require("fs")
+;
 
 exports.run = (bot, message, args, client) => {
   let crafty = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
