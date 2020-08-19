@@ -1,13 +1,16 @@
-module.exports.run = async (bot, message, args) => {
+const Discord = require("discord.js");
 
-   const saymessage = ["<a:s_ngibing:725932668138684446>", ":fish:", ":tropical_fish:", ":blowfish:", ":boot:"];
-  
-  message.delete().catch(O_o => {});
-message.send(${fish})
+const bot = new Discord.Client();
+
+exports.run = async (client, message, args) => {
+
+  const fishes = ["<a:s_ngibing:725932668138684446>", ];
+
+  const fish = fishes[Math.floor(Math.random() * fishes.length)];
+message.delete();
+  message.channel.send(
+    `${fish}`
+  );
+
 };
 
-module.exports.help = {
-
-  name: "emot"
-
-};
