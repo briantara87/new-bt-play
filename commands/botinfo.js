@@ -16,29 +16,29 @@ module.exports.run = async (bot, message, args) => {
 
     let botembed = new Discord.RichEmbed()
 
-    .setColor("#00ff00")
+    .setColor("RANDOM")
 
     .setThumbnail(bicon)
 
-    .addField("Bot Name", `<:bot:736930869184299070> ${bot.user.username}`, inline)
+    .addField("Bot Name", `<:robot:736930869184299070> ${bot.user.username}`, inline)
 
-    .addField("Bot Owner", "<:bletik bt:424890572919013397> <@291221132256870400>", inline )
+    .addField("Bot Owner", "<a:s_ngibing:725932668138684446> <@478547279104442368>", inline )
 
     .addField("Servers", `🛡 ${servsize}`, inline)
 
     .addField("Channels", `📁 ${chansize}`, inline)
 
-    .addField("Users", `<:user:424958082691629057> ${usersize}`, inline)
+    .addField("Users", `<:bust_in_silhouette:478547279104442368> ${usersize}`, inline)
 
-    .addField("Bot Library", "<:discordjs:425241283779362816> Discord.js", inline)
+    .addField("Bot Library", "<:notebook_with_decorative_cover:478547279104442368> Discord.js", inline)
 
     .addField("Created On", bot.user.createdAt)
 
-    .setFooter(`Information about: ${bot.user.username}. Developed by: Odar`)
+    .setFooter(`Information about: ${bot.user.username}. Developed by: bletik bt`)
 
     .setTimestamp()
 
-    
+    message.delete();
 
     message.channel.send(botembed);
 
