@@ -1,45 +1,85 @@
-module.exports.run = async (bot, message, args, funcs, con) => {
+const { Command } = require('discord.js-commando');
 
-    try {
+const { oneLine } = require('common-tags');
 
-        con.query(`SELECT * FROM afk WHERE guildId = '${message.guild.id}' AND userId = '${message.author.id}'`, (err, rows) => {
+const afkUsers = require('../../bin/afk.json');
 
-            if (err) return funcs.send(`An error occurred! Error: ${err.message}`);
+module.exports = class AFKCommand extends Command {
 
-            const reason = args.join(` `) || "No reason provided";
+  constructor(client) {
 
-            if (!rows || rows.length == 0) {
+    super(client, {
 
-                con.query(`INSERT INTO afk (guildId, userId, isAfk, afkReason) VALUES (?, ?, ?, ?)`, [message.guild.id, message.author.id, 1, reason]);
+      name: 'afk',
 
-            }
+      aliases: ['away', 'setaway', 'eafk'],
 
-            con.query(`UPDATE afk SET isAfk = 1, afkReason = "${reason}" WHERE guildId = '${message.guild.id}' AND userId = '${message.author.id}'`);
+      group: 'general',
 
-            funcs.send(`You are now afk for: ${reason}.`);
+      memberName: 'afk',
 
-        });
+      description: 'Manages a server\'s public roles.',
 
-    } catch (err) {
+      details: oneLine`
 
-        console.log(err)
+      Do you want to have an opt-in only NSFW channel? A role that you can ping to avoid pinging everyone?
 
-        return funcs.send(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+      This command allows for management of a server's public roles.
+
+      Note: Adding and removing public roles must be done by someone with the MANAGE_ROLES permission.
+
+      Giving and taking requires no permissions.
+
+			`,      examples: ['afk getting food'],
+
+      args: [{
+
+        key: 'msg',
+
+        label: 'message',
+
+        prompt: 'What would you like your afk message to be?',
+
+        type: 'string',
+
+        infinite: false
+
+      }],
+
+      guildOnly: true,
+
+      guarded: true
+
+    });
+
+  }
+
+  run(message, args) {
+
+    if (afkUsers[message.author.id]) {
+
+      afkUsers[message.author.id].afk = true;
+
+      afkUsers[message.author.id].status = args;
+
+      afkUsers[message.author.id].id = message.author.id;
+
+      message.channel.send(`${message.author.tag}, I have set your afk to ${JSON.stringify(afkUsers[message.author.id].status.msg)}`);
+
+    } else {
+
+      afkUsers[message.author.id] = {
+
+        afk: false,
+
+        status: 'Online'
+
+      };
+
+      message.reply('This message is normal to see if this is your first time using this command. If so, rerun the command. However, if this is not your first time running this command, then please contact a Developer on the SmoreSoftware server. https://discord.gg/6P6MNAU');
 
     }
 
-};
-
-module.exports.config = {
-
-    name: "afk",
-
-    aliases: [],
-
-    usage: "Use this command to go afk.",
-
-    commandCategory: "fun",
-
-    cooldownTime: '5'
+  }
 
 };
