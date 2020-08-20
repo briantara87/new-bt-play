@@ -45,7 +45,7 @@ exports.run = (bot, message, args, client) => {
       "Music commands :",
       "`loop  nowplaying  pause  play  playlist  queue  remove  remove  search  skip  skipto  stats  stop  volume`"
     )
-    .addField("Other commands will be added soon :ok_hand:", "_ _", "true") //ngapain? ~andra
+    .addField("Other commands will be added soon <a:s_ngibing:725932668138684446> <a:s_ngibing:725932668138684446> <a:s_ngibing:725932668138684446>", "_ _", "true") //ngapain? ~andra
 
     .setFooter(
       "©Release 2019 | bletik Bot | This bot is still under Development"
