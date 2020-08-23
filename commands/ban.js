@@ -5,7 +5,7 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
   let xdemb = new Discord.RichEmbed()
     .setColor("#00ff00")
-    .setTitle("Ban Command")
+    .setTitle("Ban Comman4d")
     .addField("Description:", `Ban a member`, true)
     .addField("Usage:", `!ban [user] [reason]`, true);
 
