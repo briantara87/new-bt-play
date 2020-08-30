@@ -9,7 +9,7 @@ exports.run = (bot, message, args) => {
     .setThumbnail(bot.user.avatarURL)
     .addField(
       `Invite me on your server ::`,
-      `[Invite link](https://discordapp.com/api/oauth2/authorize?client_id=736930869184299070&permissions=8&scope=bot)`,
+      `[Invite link](https://discordapp.com/api/oauth2/authorize?client_id=736930869184299070&permissions=524152263&scope=bot)`,
       true
     )
     .setFooter(
